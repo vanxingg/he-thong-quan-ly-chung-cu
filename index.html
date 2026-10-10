@@ -1,171 +1,201 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Apartment - Quản lý chung cư</title>
+<title>Smart Apartment | Quản lý chung cư thông minh</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#24334b}
-.layout{display:flex;min-height:100vh}
-.sidebar{width:235px;background:#142c4e;color:white;padding:25px 16px;flex-shrink:0}
-.brand{font-size:19px;font-weight:bold;margin:0 8px 8px}
-.sub{font-size:12px;color:#b9cbe3;margin:0 8px 28px}
-.nav{display:block;width:100%;padding:13px 12px;margin:5px 0;border:0;border-radius:8px;background:transparent;color:#dce7f5;text-align:left;cursor:pointer;font-size:14px}
-.nav:hover,.nav.active{background:#28538a;color:white}
-.main{flex:1;min-width:0;padding:28px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-h1{font-size:25px;margin:0 0 7px}
-.muted{color:#78869a;font-size:13px}
-.user{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:12px}
-.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:24px}
-.card,.panel{background:white;border:1px solid #e6ebf2;border-radius:13px;padding:20px}
-.card p{font-size:13px;color:#78869a;margin:0 0 12px}
-.number{font-size:29px;font-weight:bold;color:#1c3c65}
-.panel{margin-bottom:20px;overflow:hidden}
-.panelhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:17px}
-h2{font-size:17px;margin:0}
-input,select{padding:10px;border:1px solid #d8e0eb;border-radius:7px;background:white;max-width:100%}
-button.primary{background:#2463a6;color:white;border:0;border-radius:7px;padding:11px 15px;cursor:pointer}
-button.primary:hover{background:#194d87}
-.tablewrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px}
-th,td{padding:14px 12px;text-align:left;border-bottom:1px solid #edf0f5}
-th{background:#f8fafc;color:#64748b;font-weight:600}
-.status{padding:5px 9px;border-radius:20px;font-size:12px}
-.occupied{background:#dff7e9;color:#18794e}
-.empty{background:#e2edff;color:#245db4}
-.hidden{display:none}
-.formrow{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.formrow input,.formrow select{flex:1;min-width:140px}
-.notice{padding:14px;background:#f2f7ff;border-radius:8px;margin:10px 0;font-size:14px}
-@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.layout{display:block}.sidebar{width:100%;padding:17px}.sub{margin-bottom:12px}.nav{display:inline-block;width:auto;margin:3px;padding:10px}.main{padding:18px 12px}.cards{gap:9px}.card{padding:14px}.number{font-size:23px}h1{font-size:21px}}
+:root{--navy:#17365d;--blue:#2867b2;--bg:#f4f7fb;--text:#24344d;--muted:#718096;--line:#e3eaf2;--green:#16845b;--orange:#c97820;--purple:#7754c8}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.hidden{display:none!important}.login-page{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;background:#fff}
+.login-art{padding:56px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#132c4e,#245b92);color:#fff;position:relative;overflow:hidden}
+.login-art:before,.login-art:after{content:"";position:absolute;border:1px solid #ffffff20;border-radius:50%;width:460px;height:460px;right:-140px;top:12%}.login-art:after{width:300px;height:300px;right:-60px;top:25%}
+.logo{display:flex;align-items:center;gap:12px;font-weight:750;font-size:20px;position:relative;z-index:1}.logo-icon{width:44px;height:44px;border-radius:13px;background:#ffffff20;display:grid;place-items:center;font-size:25px}
+.art-copy{position:relative;z-index:1;max-width:570px}.art-copy .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b8d8ff;font-weight:700}.art-copy h1{font-size:clamp(32px,4vw,52px);line-height:1.12;margin:18px 0}.art-copy p{color:#d8e7f8;line-height:1.8;max-width:490px}.feature-list{display:grid;gap:12px;margin-top:28px}.feature{display:flex;gap:12px;align-items:center;color:#edf5ff;font-size:14px}.feature span{width:28px;height:28px;border-radius:8px;background:#ffffff1a;display:grid;place-items:center}
+.art-foot{position:relative;z-index:1;color:#b9cbe0;font-size:12px}
+.login-side{display:grid;place-items:center;padding:34px 24px}.login-card{width:min(100%,420px)}.login-card h2{font-size:29px;margin:0 0 9px;color:#1b2d45}.subtext{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 27px}.field{display:grid;gap:8px;margin:17px 0}.field label{font-size:13px;font-weight:650}.field input,.field select,.field textarea{width:100%;border:1px solid #d9e2ed;border-radius:10px;padding:13px 14px;background:#fff;outline:none}.field input:focus,.field select:focus{border-color:#528bd0;box-shadow:0 0 0 3px #2867b215}.password-wrap{display:flex;position:relative}.password-wrap input{padding-right:75px}.show-pass{position:absolute;right:8px;top:7px;border:0;background:transparent;color:var(--blue);font-size:12px;padding:7px}.primary{border:0;border-radius:10px;padding:13px 16px;background:var(--blue);color:white;font-weight:700}.primary:hover{filter:brightness(.94)}.login-button{width:100%;margin-top:8px}.error{color:#c0392b;background:#fff0ef;border:1px solid #ffd8d4;border-radius:9px;padding:10px 12px;font-size:13px;margin-top:13px}.demo-box{margin-top:22px;background:#f5f8fc;border:1px solid var(--line);padding:14px;border-radius:12px}.demo-title{font-size:12px;font-weight:750;color:#52647a;margin-bottom:10px}.demo-account{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #e7edf5;font-size:12px}.demo-account button{border:1px solid #d4dfed;background:white;border-radius:7px;padding:6px 9px;color:var(--blue);font-size:12px}.security-note{font-size:11px;color:#8491a2;line-height:1.5;margin-top:13px}
+.app{min-height:100vh;display:flex}.sidebar{width:250px;background:#142d4f;color:white;padding:24px 15px;display:flex;flex-direction:column;flex-shrink:0}.side-brand{display:flex;gap:10px;align-items:center;font-weight:750;font-size:16px;padding:0 9px 7px}.side-sub{font-size:10px;letter-spacing:1px;color:#a9bfd9;padding:0 10px 25px}.side-user{display:flex;gap:10px;align-items:center;background:#ffffff12;padding:12px;border-radius:12px;margin-bottom:22px}.avatar{width:37px;height:37px;border-radius:11px;background:#ffffff20;display:grid;place-items:center;font-weight:800}.side-user strong{display:block;font-size:13px}.side-user small{display:block;color:#c2d3e7;font-size:11px;margin-top:4px}.nav-label{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#93abc8;padding:0 11px 8px}.nav{display:flex;align-items:center;gap:11px;width:100%;padding:12px 11px;margin:3px 0;border:0;border-radius:9px;background:transparent;color:#d4e0ef;text-align:left;font-size:13px}.nav:hover,.nav.active{background:#ffffff1c;color:#fff}.nav.active{box-shadow:inset 3px 0 #7bb4ff}.side-bottom{margin-top:auto;padding-top:24px}.main{min-width:0;flex:1}.topbar{min-height:76px;background:#fff;border-bottom:1px solid var(--line);padding:15px 30px;display:flex;align-items:center;justify-content:space-between;gap:15px}.top-title{font-size:19px;font-weight:750}.top-right{display:flex;align-items:center;gap:12px}.role-chip{padding:7px 10px;border-radius:20px;background:#edf4ff;color:#275b99;font-size:12px;font-weight:700}.logout{border:1px solid #dbe3ed;background:#fff;border-radius:9px;padding:9px 12px;color:#42536a}.content{padding:28px 30px;max-width:1500px;margin:auto}.welcome{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;flex-wrap:wrap;margin-bottom:24px}.welcome h1{font-size:25px;margin:0 0 8px}.welcome p{color:var(--muted);font-size:13px;margin:0}.date-pill{font-size:12px;color:#66768b;background:white;border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:23px}.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:19px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;gap:8px}.stat-icon{width:36px;height:36px;display:grid;place-items:center;background:#edf4ff;border-radius:10px;font-size:18px}.stat-num{font-size:28px;font-weight:800;margin:14px 0 5px;color:#203a5c}.stat-foot{font-size:11px;color:#8491a2}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:21px;margin-bottom:19px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:17px}.panel h2{font-size:16px;margin:0}.muted{color:var(--muted);font-size:12px}.grid-two{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:12px}th,td{text-align:left;padding:13px 12px;border-bottom:1px solid #edf1f6}th{font-size:11px;color:#6e7e92;background:#f8fafc;font-weight:750}tbody tr:last-child td{border-bottom:0}.status{display:inline-block;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:700}.s-green{color:#18764f;background:#e2f7ec}.s-orange{color:#986019;background:#fff1d9}.s-blue{color:#285da4;background:#e7f0ff}.s-purple{color:#6742aa;background:#efe8ff}.notice{display:flex;gap:11px;padding:13px 0;border-bottom:1px solid #edf1f6}.notice:last-child{border:0}.notice-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#eef4fc;flex-shrink:0}.notice strong{display:block;font-size:12px;margin:2px 0 5px}.notice p{font-size:11px;line-height:1.5;color:var(--muted);margin:0}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}.toolbar input,.toolbar select{border:1px solid #dbe3ed;border-radius:9px;padding:10px 12px;background:white;min-width:160px}.toolbar input{flex:1}.secondary{border:1px solid #dbe3ed;background:#fff;color:#3c506a;border-radius:9px;padding:10px 13px;font-size:12px;font-weight:650}.secondary:hover{background:#f6f9fc}.role-card{border:1px solid var(--line);border-radius:12px;padding:17px;display:flex;gap:12px;margin:10px 0}.role-symbol{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex-shrink:0}.role-card h3{font-size:13px;margin:1px 0 6px}.role-card p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}.empty-state{padding:32px;text-align:center;color:var(--muted);font-size:13px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.form-grid .field{margin:0}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.toast{position:fixed;right:22px;bottom:22px;background:#183b61;color:white;padding:13px 18px;border-radius:10px;box-shadow:0 10px 35px #0b24422b;font-size:13px;z-index:10}.mobile-menu{display:none}
+@media(max-width:1000px){.sidebar{width:220px}.content{padding:22px 18px}.topbar{padding:14px 18px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-two{grid-template-columns:1fr}}
+@media(max-width:700px){.login-page{grid-template-columns:1fr}.login-art{display:none}.login-side{min-height:100vh;padding:25px 18px}.sidebar{width:100%;padding:13px;display:block}.app{display:block}.side-sub{padding-bottom:12px}.side-user{margin-bottom:10px}.nav-label{display:none}.nav{display:inline-flex;width:auto;padding:10px 9px;font-size:12px}.side-bottom{display:none}.topbar{min-height:65px;padding:12px 14px}.top-title{font-size:15px}.role-chip{display:none}.content{padding:19px 12px}.stats{gap:9px}.stat{padding:13px}.stat-num{font-size:24px}.stat-top{font-size:11px}.welcome h1{font-size:21px}.form-grid{grid-template-columns:1fr}.top-right{gap:6px}}
 </style>
 </head>
 <body>
-<div class="layout">
-<aside class="sidebar">
-  <div class="brand">⌂ Smart Apartment</div>
-  <p class="sub">HỆ THỐNG QUẢN LÝ CHUNG CƯ</p>
-  <button class="nav active" data-page="overview">▦ Tổng quan</button>
-  <button class="nav" data-page="rooms">▤ Quản lý phòng</button>
-  <button class="nav" data-page="tenants">♙ Người thuê</button>
-  <button class="nav" data-page="bills">▣ Hóa đơn</button>
-  <button class="nav" data-page="repairs">⚒ Yêu cầu sửa chữa</button>
-  <button class="nav" data-page="notices">♧ Thông báo</button>
-  <button class="nav" data-page="accounts">⚙ Tài khoản</button>
-</aside>
-
-<main class="main">
-<header class="top">
-  <div>
-    <h1 id="pageTitle">Tổng quan hệ thống</h1>
-    <div class="muted">Theo dõi và quản lý chung cư của bạn</div>
-  </div>
-  <div class="user">♙ Chủ chung cư</div>
-</header>
-
-<section id="overview">
-  <div class="cards">
-    <div class="card"><p>Tổng số phòng</p><div class="number" id="total">12</div></div>
-    <div class="card"><p>Phòng đang thuê</p><div class="number" id="rented">9</div></div>
-    <div class="card"><p>Phòng còn trống</p><div class="number" id="vacant">3</div></div>
-    <div class="card"><p>Hóa đơn chưa thu</p><div class="number">4</div></div>
-  </div>
-  <div class="panel">
-    <div class="panelhead"><h2>Tình trạng phòng gần đây</h2><button class="primary" onclick="showPage('rooms')">Quản lý phòng →</button></div>
-    <p class="muted">Chào mừng bạn đến với hệ thống quản lý chung cư thông minh.</p>
-    <div class="notice">📌 Bạn có thể theo dõi phòng, người thuê và các khoản phí tại menu bên trái.</div>
-  </div>
-</section>
-
-<section id="rooms" class="hidden">
-  <div class="panel">
-    <div class="panelhead">
-      <h2>Danh sách phòng</h2>
-      <button class="primary" onclick="toggleForm()">+ Thêm phòng</button>
-    </div>
-    <div id="addForm" class="hidden">
-      <div class="formrow">
-        <input id="roomName" placeholder="Tên phòng, ví dụ: P.301">
-        <input id="roomPrice" type="number" placeholder="Giá thuê (VNĐ)">
-        <select id="roomStatus"><option>Trống</option><option>Đang thuê</option></select>
-        <button class="primary" onclick="addRoom()">Lưu phòng</button>
+<section id="loginPage" class="login-page">
+  <div class="login-art">
+    <div class="logo"><div class="logo-icon">⌂</div><div>Smart Apartment</div></div>
+    <div class="art-copy">
+      <div class="eyebrow">SMART LIVING · SMART MANAGEMENT</div>
+      <h1>Quản lý chung cư<br>thông minh hơn.</h1>
+      <p>Một không gian quản lý tiện lợi, giúp kết nối chủ chung cư, người thuê và quản trị viên trên cùng một hệ thống.</p>
+      <div class="feature-list">
+        <div class="feature"><span>✓</span> Quản lý phòng và người thuê tập trung</div>
+        <div class="feature"><span>✓</span> Theo dõi hóa đơn và yêu cầu sửa chữa</div>
+        <div class="feature"><span>✓</span> Thông tin rõ ràng theo từng vai trò</div>
       </div>
     </div>
-    <div class="formrow">
-      <input id="search" placeholder="Tìm theo tên phòng..." oninput="renderRooms()">
-      <select id="filter" onchange="renderRooms()"><option value="">Tất cả trạng thái</option><option>Đang thuê</option><option>Trống</option></select>
+    <div class="art-foot">HỆ THỐNG QUẢN LÝ CHUNG CƯ MINI · BẢN DEMO</div>
+  </div>
+  <div class="login-side">
+    <div class="login-card">
+      <div class="logo" style="color:#1b3454;margin-bottom:32px"><div class="logo-icon" style="background:#eaf2fc;color:#245b99">⌂</div><div>Smart Apartment</div></div>
+      <h2>Chào mừng trở lại!</h2>
+      <p class="subtext">Đăng nhập để truy cập không gian quản lý phù hợp với vai trò của bạn.</p>
+      <form id="loginForm">
+        <div class="field"><label for="username">Tên đăng nhập</label><input id="username" autocomplete="username" placeholder="Nhập tên đăng nhập" required></div>
+        <div class="field"><label for="password">Mật khẩu</label><div class="password-wrap"><input id="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required><button class="show-pass" type="button" id="togglePass">Hiện mật khẩu</button></div></div>
+        <button class="primary login-button" type="submit">Đăng nhập&nbsp; →</button>
+        <div id="loginError" class="error hidden" role="alert">Tên đăng nhập hoặc mật khẩu chưa chính xác.</div>
+      </form>
+      <div class="demo-box">
+        <div class="demo-title">TÀI KHOẢN DEMO — NHẤN ĐỂ ĐIỀN NHANH</div>
+        <div class="demo-account"><div><strong>Quản trị viên</strong><br><span class="muted">admin / Admin123</span></div><button type="button" data-demo="admin">Dùng tài khoản</button></div>
+        <div class="demo-account"><div><strong>Chủ chung cư</strong><br><span class="muted">owner / Owner123</span></div><button type="button" data-demo="owner">Dùng tài khoản</button></div>
+        <div class="demo-account"><div><strong>Đại diện thuê phòng</strong><br><span class="muted">tenant / Tenant123</span></div><button type="button" data-demo="tenant">Dùng tài khoản</button></div>
+      </div>
+      <p class="security-note">Đây là bản giao diện minh họa phục vụ học tập. Tài khoản demo được kiểm tra ở phía trình duyệt, chưa phù hợp để bảo vệ dữ liệu thật.</p>
     </div>
-    <div class="tablewrap"><table>
-      <thead><tr><th>Phòng</th><th>Giá thuê/tháng</th><th>Trạng thái</th></tr></thead>
-      <tbody id="roomRows"></tbody>
-    </table></div>
   </div>
 </section>
 
-<section id="tenants" class="hidden"><div class="panel"><h2>Quản lý người thuê</h2><div class="notice">Nguyễn Minh Anh — Phòng 201 — Đại diện người thuê</div><div class="notice">Trần Thu Hà — Phòng 202 — Người thuê</div><div class="notice">Lê Hoàng Nam — Phòng 301 — Người thuê</div></div></section>
-
-<section id="bills" class="hidden"><div class="panel"><h2>Quản lý hóa đơn</h2><div class="tablewrap"><table><thead><tr><th>Phòng</th><th>Khoản phí</th><th>Số tiền</th><th>Trạng thái</th></tr></thead><tbody><tr><td>201</td><td>Điện, nước</td><td>650.000đ</td><td>Chưa thanh toán</td></tr><tr><td>202</td><td>Tiền thuê</td><td>3.500.000đ</td><td>Chưa thanh toán</td></tr><tr><td>301</td><td>Điện, nước</td><td>520.000đ</td><td>Đã thanh toán</td></tr></tbody></table></div><p class="muted">Số liệu chỉ để minh họa.</p></div></section>
-
-<section id="repairs" class="hidden"><div class="panel"><h2>Yêu cầu sửa chữa</h2><div class="notice">Phòng 201 — Kiểm tra vòi nước — Đang xử lý</div><div class="notice">Phòng 302 — Đèn hành lang — Chờ tiếp nhận</div><button class="primary" onclick="alert('Đây là giao diện minh họa yêu cầu sửa chữa.')">Tạo yêu cầu mẫu</button></div></section>
-
-<section id="notices" class="hidden"><div class="panel"><h2>Thông báo chung cư</h2><div class="notice">📢 Thông báo đóng tiền điện nước trước ngày 10 hằng tháng.</div><div class="notice">📢 Vui lòng giữ gìn vệ sinh khu vực chung.</div></div></section>
-
-<section id="accounts" class="hidden"><div class="panel"><h2>Quản lý tài khoản</h2><div class="notice">Chủ chung cư — Quản lý phòng, hóa đơn và thông báo.</div><div class="notice">Người đại diện thuê phòng — Theo dõi phí và gửi yêu cầu sửa chữa.</div><div class="notice">Quản trị hệ thống — Quản lý tài khoản và phân quyền.</div><p class="muted">Chức năng phân quyền thực tế chưa được kết nối.</p></div></section>
-
-</main>
-</div>
+<section id="appPage" class="app hidden">
+  <aside class="sidebar">
+    <div class="side-brand"><div class="logo-icon">⌂</div><span>Smart Apartment</span></div>
+    <div class="side-sub">HỆ THỐNG QUẢN LÝ CHUNG CƯ</div>
+    <div class="side-user"><div class="avatar" id="avatar">A</div><div><strong id="sideName">Quản trị viên</strong><small id="sideRole">Quản trị hệ thống</small></div></div>
+    <div class="nav-label">Không gian làm việc</div>
+    <nav id="navigation"></nav>
+    <div class="side-bottom"><button class="nav" id="logoutBottom">↪ &nbsp; Đăng xuất</button></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="top-title" id="topTitle">Tổng quan</div><div class="top-right"><span id="roleChip" class="role-chip">Quản trị viên</span><button class="logout" id="logoutTop">Đăng xuất ↗</button></div></header>
+    <div class="content" id="pageContent"></div>
+  </main>
+</section>
+<div id="toast" class="toast hidden" role="status"></div>
 
 <script>
-let rooms = [
- {name:"P.201",price:3500000,status:"Đang thuê"},
- {name:"P.202",price:3500000,status:"Đang thuê"},
- {name:"P.203",price:3200000,status:"Trống"},
- {name:"P.301",price:3800000,status:"Đang thuê"},
- {name:"P.302",price:3800000,status:"Trống"},
- {name:"P.303",price:3500000,status:"Đang thuê"},
- {name:"P.401",price:4000000,status:"Đang thuê"},
- {name:"P.402",price:4000000,status:"Trống"},
- {name:"P.403",price:3700000,status:"Đang thuê"},
- {name:"P.501",price:4200000,status:"Đang thuê"},
- {name:"P.502",price:4200000,status:"Đang thuê"},
- {name:"P.503",price:3900000,status:"Đang thuê"}
+const USERS={
+ admin:{password:"Admin123",name:"Quản trị viên",role:"admin",roleName:"Quản trị hệ thống",initial:"QT"},
+ owner:{password:"Owner123",name:"Chủ chung cư",role:"owner",roleName:"Chủ chung cư",initial:"CC"},
+ tenant:{password:"Tenant123",name:"Nguyễn Minh Anh",role:"tenant",roleName:"Đại diện thuê phòng",initial:"NA"}
+};
+const MENUS={
+ admin:[["overview","▦","Tổng quan"],["accounts","♙","Quản lý tài khoản"],["activity","◷","Nhật ký hoạt động"],["system","⚙","Cài đặt hệ thống"]],
+ owner:[["overview","▦","Tổng quan"],["rooms","▤","Quản lý phòng"],["tenants","♙","Người thuê"],["bills","▣","Hóa đơn"],["repairs","⚒","Yêu cầu sửa chữa"],["notices","♧","Thông báo"]],
+ tenant:[["overview","▦","Tổng quan"],["myroom","⌂","Thông tin phòng"],["bills","▣","Hóa đơn của tôi"],["history","◷","Lịch sử thanh toán"],["repairs","⚒","Yêu cầu sửa chữa"],["notices","♧","Thông báo"]]
+};
+const TITLES={overview:"Tổng quan",accounts:"Quản lý tài khoản",activity:"Nhật ký hoạt động",system:"Cài đặt hệ thống",rooms:"Quản lý phòng",tenants:"Quản lý người thuê",bills:"Hóa đơn",repairs:"Yêu cầu sửa chữa",notices:"Thông báo",myroom:"Thông tin phòng",history:"Lịch sử thanh toán"};
+let currentUser=null,currentPage="overview",toastTimer=null;
+let rooms=[
+ {name:"P.201",floor:"2",price:3500000,status:"Đang thuê",tenant:"Nguyễn Minh Anh"},
+ {name:"P.202",floor:"2",price:3500000,status:"Đang thuê",tenant:"Trần Thu Hà"},
+ {name:"P.203",floor:"2",price:3200000,status:"Trống",tenant:"—"},
+ {name:"P.301",floor:"3",price:3800000,status:"Đang thuê",tenant:"Lê Hoàng Nam"},
+ {name:"P.302",floor:"3",price:3800000,status:"Trống",tenant:"—"},
+ {name:"P.303",floor:"3",price:3500000,status:"Đang thuê",tenant:"Phạm Quỳnh Anh"},
+ {name:"P.401",floor:"4",price:4000000,status:"Đang thuê",tenant:"Đỗ Minh Đức"},
+ {name:"P.402",floor:"4",price:4000000,status:"Trống",tenant:"—"}
 ];
-
-function showPage(page){
- document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
- document.getElementById(page).classList.remove("hidden");
- document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
- const titles={overview:"Tổng quan hệ thống",rooms:"Quản lý phòng",tenants:"Quản lý người thuê",bills:"Quản lý hóa đơn",repairs:"Yêu cầu sửa chữa",notices:"Thông báo",accounts:"Quản lý tài khoản"};
- document.getElementById("pageTitle").textContent=titles[page];
+let bills=[
+ {room:"P.201",type:"Tiền thuê tháng 10",amount:3500000,status:"Chưa thanh toán"},
+ {room:"P.201",type:"Điện và nước",amount:650000,status:"Chưa thanh toán"},
+ {room:"P.202",type:"Tiền thuê tháng 10",amount:3500000,status:"Đã thanh toán"},
+ {room:"P.301",type:"Điện và nước",amount:520000,status:"Đã thanh toán"}
+];
+let repairs=[
+ {room:"P.201",issue:"Kiểm tra vòi nước",date:"08/10/2026",status:"Đang xử lý"},
+ {room:"P.302",issue:"Đèn hành lang",date:"09/10/2026",status:"Chờ tiếp nhận"}
+];
+let notices=[
+ {title:"Thông báo đóng phí tháng 10",body:"Vui lòng hoàn thành các khoản phí trước ngày 10 hằng tháng.",date:"05/10/2026"},
+ {title:"Vệ sinh khu vực chung",body:"Đề nghị cư dân giữ gìn vệ sinh hành lang và khu vực để xe.",date:"07/10/2026"}
+];
+let activity=["Hệ thống được khởi tạo với dữ liệu minh họa."];
+function money(n){return Number(n).toLocaleString("vi-VN")+" ₫"}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.remove("hidden");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add("hidden"),2600)}
+function log(msg){activity.unshift(new Date().toLocaleString("vi-VN")+" — "+msg);activity=activity.slice(0,30)}
+document.getElementById("togglePass").addEventListener("click",()=>{const p=document.getElementById("password");p.type=p.type==="password"?"text":"password";document.getElementById("togglePass").textContent=p.type==="password"?"Hiện mật khẩu":"Ẩn mật khẩu"});
+document.querySelectorAll("[data-demo]").forEach(b=>b.addEventListener("click",()=>{const u=b.dataset.demo;document.getElementById("username").value=u;document.getElementById("password").value=USERS[u].password;document.getElementById("loginError").classList.add("hidden")}));
+document.getElementById("loginForm").addEventListener("submit",e=>{e.preventDefault();const u=document.getElementById("username").value.trim().toLowerCase(),p=document.getElementById("password").value; if(!USERS[u]||USERS[u].password!==p){document.getElementById("loginError").classList.remove("hidden");return}currentUser={username:u,...USERS[u]};log(currentUser.name+" đăng nhập");document.getElementById("loginError").classList.add("hidden");document.getElementById("loginPage").classList.add("hidden");document.getElementById("appPage").classList.remove("hidden");document.getElementById("sideName").textContent=currentUser.name;document.getElementById("sideRole").textContent=currentUser.roleName;document.getElementById("avatar").textContent=currentUser.initial;document.getElementById("roleChip").textContent=currentUser.roleName;buildNav();renderPage("overview")});
+function logout(){if(currentUser)log(currentUser.name+" đăng xuất");currentUser=null;document.getElementById("appPage").classList.add("hidden");document.getElementById("loginPage").classList.remove("hidden");document.getElementById("password").value="";document.getElementById("username").value="";document.getElementById("loginError").classList.add("hidden")}
+document.getElementById("logoutTop").addEventListener("click",logout);document.getElementById("logoutBottom").addEventListener("click",logout);
+function buildNav(){document.getElementById("navigation").innerHTML=MENUS[currentUser.role].map(([id,icon,label])=>`<button class="nav ${currentPage===id?"active":""}" data-page="${id}"><span>${icon}</span>${label}</button>`).join("");document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>renderPage(b.dataset.page)))}
+function statusClass(s){if(s==="Đã thanh toán"||s==="Đang thuê"||s==="Đã xử lý")return "s-green";if(s==="Trống")return "s-blue";if(s==="Đang xử lý"||s==="Chờ tiếp nhận"||s==="Chưa thanh toán")return "s-orange";return "s-purple"}
+function pill(s){return `<span class="status ${statusClass(s)}">${esc(s)}</span>`}
+function stats(items){return `<div class="stats">${items.map(x=>`<div class="stat"><div class="stat-top"><span>${x.label}</span><span class="stat-icon">${x.icon}</span></div><div class="stat-num">${x.value}</div><div class="stat-foot">${x.foot||"Cập nhật theo dữ liệu minh họa"}</div></div>`).join("")}</div>`}
+function panel(title,body,action=""){return `<section class="panel"><div class="panel-head"><h2>${title}</h2>${action}</div>${body}</section>`}
+function roomTable(list=rooms){return `<div class="table-wrap"><table><thead><tr><th>Phòng</th><th>Tầng</th><th>Giá thuê/tháng</th><th>Người thuê đại diện</th><th>Trạng thái</th></tr></thead><tbody>${list.map(r=>`<tr><td><strong>${esc(r.name)}</strong></td><td>${esc(r.floor)}</td><td>${money(r.price)}</td><td>${esc(r.tenant)}</td><td>${pill(r.status)}</td></tr>`).join("")||'<tr><td colspan="5" class="empty-state">Không tìm thấy phòng phù hợp.</td></tr>'}</tbody></table></div>`}
+function billTable(list){return `<div class="table-wrap"><table><thead><tr><th>Phòng</th><th>Khoản phí</th><th>Số tiền</th><th>Trạng thái</th>${currentUser.role==="tenant"?"<th>Thao tác</th>":""}</tr></thead><tbody>${list.map((b,i)=>`<tr><td>${esc(b.room)}</td><td>${esc(b.type)}</td><td>${money(b.amount)}</td><td>${pill(b.status)}</td>${currentUser.role==="tenant"?`<td>${b.status!=="Đã thanh toán"?`<button class="secondary" data-pay="${bills.indexOf(b)}">Đánh dấu đã trả</button>`:"—"}</td>`:""}</tr>`).join("")||'<tr><td colspan="5" class="empty-state">Chưa có hóa đơn.</td></tr>'}</tbody></table></div>`}
+function repairTable(list){return `<div class="table-wrap"><table><thead><tr><th>Phòng</th><th>Nội dung</th><th>Ngày gửi</th><th>Trạng thái</th>${currentUser.role==="owner"?"<th>Thao tác</th>":""}</tr></thead><tbody>${list.map((r,i)=>`<tr><td>${esc(r.room)}</td><td>${esc(r.issue)}</td><td>${esc(r.date)}</td><td>${pill(r.status)}</td>${currentUser.role==="owner"?`<td><button class="secondary" data-repair="${i}">Cập nhật trạng thái</button></td>`:""}</tr>`).join("")||'<tr><td colspan="5" class="empty-state">Chưa có yêu cầu sửa chữa.</td></tr>'}</tbody></table></div>`}
+function overview(){
+ const role=currentUser.role;
+ let out=`<div class="welcome"><div><h1>Xin chào, ${esc(currentUser.name)} 👋</h1><p>${role==="admin"?"Tổng quan vận hành và quản trị hệ thống.":role==="owner"?"Theo dõi tình hình hoạt động chung cư của bạn.":"Theo dõi thông tin thuê phòng và các dịch vụ chung cư."}</p></div><span class="date-pill">📅 ${new Date().toLocaleDateString("vi-VN")}</span></div>`;
+ if(role==="admin"){
+  out+=stats([{label:"Tổng tài khoản",value:"03",icon:"♙",foot:"3 vai trò demo"},{label:"Vai trò hệ thống",value:"03",icon:"⚿"},{label:"Yêu cầu sửa chữa",value:repairs.length,icon:"⚒"},{label:"Hoạt động gần đây",value:activity.length,icon:"◷"}]);
+  out+=`<div class="grid-two">${panel("Các vai trò hệ thống",`<div class="role-card"><div class="role-symbol" style="background:#efe8ff;color:#7754c8">⚿</div><div><h3>Quản trị viên</h3><p>Quản lý tài khoản, vai trò và theo dõi hoạt động hệ thống.</p></div></div><div class="role-card"><div class="role-symbol" style="background:#fff1df;color:#c97820">⌂</div><div><h3>Chủ chung cư</h3><p>Quản lý phòng, người thuê, hóa đơn, sửa chữa và thông báo.</p></div></div><div class="role-card"><div class="role-symbol" style="background:#e1f7eb;color:#16845b">♙</div><div><h3>Đại diện thuê phòng</h3><p>Xem hóa đơn, lịch sử và gửi yêu cầu sửa chữa.</p></div></div>`)}${panel("Hoạt động gần đây",activity.slice(0,5).map(a=>`<div class="notice"><div class="notice-icon">◷</div><div><p>${esc(a)}</p></div></div>`).join(""))}</div>`;
+ }else if(role==="owner"){
+  out+=stats([{label:"Tổng số phòng",value:rooms.length,icon:"▤"},{label:"Đang cho thuê",value:rooms.filter(r=>r.status==="Đang thuê").length,icon:"⌂"},{label:"Phòng còn trống",value:rooms.filter(r=>r.status==="Trống").length,icon:"＋"},{label:"Hóa đơn chưa thu",value:bills.filter(b=>b.status!=="Đã thanh toán").length,icon:"▣"}]);
+  out+=`<div class="grid-two">${panel("Tình trạng phòng",roomTable(rooms.slice(0,5)),`<button class="secondary" data-goto="rooms">Xem tất cả →</button>`)}${panel("Thông báo gần đây",notices.map(n=>`<div class="notice"><div class="notice-icon">♧</div><div><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p></div></div>`).join(""))}</div>`;
+ }else{
+  const myBills=bills.filter(b=>b.room==="P.201"),myRepairs=repairs.filter(r=>r.room==="P.201");
+  out+=stats([{label:"Phòng của bạn",value:"P.201",icon:"⌂",foot:"Tầng 2"},{label:"Hóa đơn cần thanh toán",value:myBills.filter(b=>b.status!=="Đã thanh toán").length,icon:"▣"},{label:"Yêu cầu sửa chữa",value:myRepairs.length,icon:"⚒"},{label:"Thông báo mới",value:notices.length,icon:"♧"}]);
+  out+=`<div class="grid-two">${panel("Hóa đơn của bạn",billTable(myBills),`<button class="secondary" data-goto="bills">Xem hóa đơn →</button>`)}${panel("Thông báo mới",notices.map(n=>`<div class="notice"><div class="notice-icon">♧</div><div><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p></div></div>`).join(""))}</div>`;
+ }
+ return out;
 }
-document.querySelectorAll(".nav").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
-
-function renderRooms(){
- const q=document.getElementById("search").value.toLowerCase();
- const f=document.getElementById("filter").value;
- document.getElementById("roomRows").innerHTML=rooms.filter(r=>r.name.toLowerCase().includes(q)&&(!f||r.status===f)).map(r=>`<tr><td>${r.name}</td><td>${r.price.toLocaleString("vi-VN")}đ</td><td><span class="status ${r.status==="Trống"?"empty":"occupied"}">${r.status}</span></td></tr>`).join("");
- document.getElementById("total").textContent=rooms.length;
- document.getElementById("rented").textContent=rooms.filter(r=>r.status==="Đang thuê").length;
- document.getElementById("vacant").textContent=rooms.filter(r=>r.status==="Trống").length;
+function renderPage(page){
+ if(!currentUser||!MENUS[currentUser.role].some(x=>x[0]===page))return;
+ currentPage=page;document.getElementById("topTitle").textContent=TITLES[page]||"Tổng quan";buildNav();
+ let out="";
+ if(page==="overview")out=overview();
+ if(page==="rooms"){
+  out=`<div class="welcome"><div><h1>Quản lý phòng</h1><p>Theo dõi thông tin và tình trạng các phòng trong chung cư.</p></div><button class="primary" id="showAddRoom">＋ Thêm phòng</button></div>${panel("Danh sách phòng",`<div class="toolbar"><input id="roomSearch" placeholder="Tìm theo mã phòng hoặc người thuê"><select id="roomFilter"><option value="">Tất cả trạng thái</option><option>Đang thuê</option><option>Trống</option></select></div><div id="roomTable">${roomTable()}</div>`)}`;
+ }
+ if(page==="tenants"){
+  out=`<div class="welcome"><div><h1>Quản lý người thuê</h1><p>Thông tin người thuê và phòng đang sử dụng.</p></div></div>${panel("Danh sách người thuê",`<div class="table-wrap"><table><thead><tr><th>Họ và tên</th><th>Phòng</th><th>Vai trò</th><th>Trạng thái</th></tr></thead><tbody>${rooms.filter(r=>r.status==="Đang thuê").map(r=>`<tr><td>${esc(r.tenant)}</td><td>${esc(r.name)}</td><td>${r.name==="P.201"?"Đại diện thuê phòng":"Người thuê"}</td><td>${pill("Đang thuê")}</td></tr>`).join("")}</tbody></table></div>`)}`;
+ }
+ if(page==="bills"){
+  const list=currentUser.role==="tenant"?bills.filter(b=>b.room==="P.201"):bills;
+  out=`<div class="welcome"><div><h1>${currentUser.role==="tenant"?"Hóa đơn của tôi":"Quản lý hóa đơn"}</h1><p>Theo dõi các khoản phí trong hệ thống.</p></div></div>${stats([{label:"Tổng hóa đơn",value:list.length,icon:"▣"},{label:"Chưa thanh toán",value:list.filter(b=>b.status!=="Đã thanh toán").length,icon:"◷"},{label:"Đã thanh toán",value:list.filter(b=>b.status==="Đã thanh toán").length,icon:"✓"},{label:"Tổng giá trị",value:money(list.reduce((s,b)=>s+b.amount,0)),icon:"₫"}])}${panel("Chi tiết hóa đơn",billTable(list))}`;
+ }
+ if(page==="repairs"){
+  const list=currentUser.role==="tenant"?repairs.filter(r=>r.room==="P.201"):repairs;
+  out=`<div class="welcome"><div><h1>Yêu cầu sửa chữa</h1><p>${currentUser.role==="tenant"?"Gửi yêu cầu khi có sự cố trong phòng.":"Tiếp nhận và theo dõi yêu cầu sửa chữa."}</p></div>${currentUser.role==="tenant"?'<button class="primary" id="showRepair">＋ Gửi yêu cầu</button>':""}</div>${currentUser.role==="tenant"?`<section class="panel hidden" id="repairForm"><h2>Thông tin yêu cầu</h2><div class="form-grid"><div class="field"><label>Phòng</label><input value="P.201" disabled></div><div class="field"><label>Nội dung sự cố</label><input id="repairIssue" placeholder="Ví dụ: vòi nước bị rò rỉ"></div></div><div class="form-actions"><button class="secondary" id="cancelRepair">Hủy</button><button class="primary" id="submitRepair">Gửi yêu cầu</button></div></section>`:""}${panel("Danh sách yêu cầu",repairTable(list))}`;
+ }
+ if(page==="notices"){
+  out=`<div class="welcome"><div><h1>Thông báo chung cư</h1><p>Các thông tin và nhắc nhở dành cho cư dân.</p></div>${currentUser.role==="owner"?'<button class="primary" id="showNotice">＋ Tạo thông báo</button>':""}</div>${currentUser.role==="owner"?`<section class="panel hidden" id="noticeForm"><h2>Thông báo mới</h2><div class="field"><label>Tiêu đề</label><input id="noticeTitle" placeholder="Nhập tiêu đề"></div><div class="field"><label>Nội dung</label><textarea id="noticeBody" rows="3" placeholder="Nhập nội dung thông báo"></textarea></div><div class="form-actions"><button class="secondary" id="cancelNotice">Hủy</button><button class="primary" id="submitNotice">Đăng thông báo</button></div></section>`:""}${panel("Danh sách thông báo",notices.map(n=>`<div class="notice"><div class="notice-icon">♧</div><div><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p><p style="margin-top:7px">${esc(n.date)}</p></div></div>`).join(""))}`;
+ }
+ if(page==="accounts"){
+  out=`<div class="welcome"><div><h1>Quản lý tài khoản</h1><p>Danh sách tài khoản minh họa và vai trò được gán.</p></div></div>${panel("Tài khoản hệ thống",`<div class="table-wrap"><table><thead><tr><th>Tên đăng nhập</th><th>Người dùng</th><th>Vai trò</th><th>Trạng thái</th></tr></thead><tbody><tr><td>admin</td><td>Quản trị viên</td><td>${pill("Quản trị hệ thống")}</td><td>${pill("Hoạt động")}</td></tr><tr><td>owner</td><td>Chủ chung cư</td><td>${pill("Chủ chung cư")}</td><td>${pill("Hoạt động")}</td></tr><tr><td>tenant</td><td>Nguyễn Minh Anh</td><td>${pill("Đại diện thuê phòng")}</td><td>${pill("Hoạt động")}</td></tr></tbody></table></div><p class="muted" style="margin-top:14px">Bản demo không hỗ trợ tạo tài khoản thật.</p>`)}`;
+ }
+ if(page==="activity")out=`<div class="welcome"><div><h1>Nhật ký hoạt động</h1><p>Theo dõi hoạt động trong phiên trình diễn hiện tại.</p></div></div>${panel("Hoạt động gần đây",activity.map(a=>`<div class="notice"><div class="notice-icon">◷</div><div><p>${esc(a)}</p></div></div>`).join(""))}`;
+ if(page==="system")out=`<div class="welcome"><div><h1>Cài đặt hệ thống</h1><p>Thông tin cấu hình bản trình diễn.</p></div></div>${panel("Thông tin hệ thống",`<div class="role-card"><div class="role-symbol">⌂</div><div><h3>Smart Apartment</h3><p>Phiên bản giao diện demo 1.0<br>Triển khai tĩnh qua GitHub Pages<br>Chưa kết nối cơ sở dữ liệu hoặc máy chủ xác thực.</p></div></div>`)}`;
+ if(page==="myroom")out=`<div class="welcome"><div><h1>Thông tin phòng của tôi</h1><p>Thông tin thuê phòng minh họa.</p></div></div>${stats([{label:"Mã phòng",value:"P.201",icon:"⌂"},{label:"Tầng",value:"2",icon:"▤"},{label:"Tiền thuê/tháng",value:money(3500000),icon:"₫"},{label:"Trạng thái",value:"Đang thuê",icon:"✓"}])}${panel("Thông tin người đại diện",`<div class="role-card"><div class="role-symbol" style="background:#e1f7eb;color:#16845b">NA</div><div><h3>Nguyễn Minh Anh</h3><p>Vai trò: Đại diện thuê phòng<br>Phòng: P.201<br>Các thông tin trên là dữ liệu minh họa.</p></div></div>`)}`;
+ if(page==="history"){
+  const paid=bills.filter(b=>b.room==="P.201"&&b.status==="Đã thanh toán");
+  out=`<div class="welcome"><div><h1>Lịch sử thanh toán</h1><p>Các khoản phí đã được ghi nhận là thanh toán trong bản demo.</p></div></div>${panel("Lịch sử",billTable(paid))}`;
+ }
+ document.getElementById("pageContent").innerHTML=out;
+ bindPageActions();
 }
-function toggleForm(){document.getElementById("addForm").classList.toggle("hidden")}
-function addRoom(){
- const name=document.getElementById("roomName").value.trim();
- const price=Number(document.getElementById("roomPrice").value);
- const status=document.getElementById("roomStatus").value;
- if(!name||price<=0){alert("Vui lòng nhập tên phòng và giá thuê hợp lệ.");return}
- if(rooms.some(r=>r.name.toLowerCase()===name.toLowerCase())){alert("Tên phòng đã tồn tại.");return}
- rooms.push({name,price,status});
- document.getElementById("roomName").value="";
- document.getElementById("roomPrice").value="";
- renderRooms();
- alert("Đã thêm phòng vào giao diện mẫu.");
+function bindPageActions(){
+ const search=document.getElementById("roomSearch"),filter=document.getElementById("roomFilter");
+ function updateRoomTable(){const q=(search?.value||"").toLowerCase(),f=filter?.value||"";document.getElementById("roomTable").innerHTML=roomTable(rooms.filter(r=>(r.name+" "+r.tenant).toLowerCase().includes(q)&&(!f||r.status===f)))}
+ if(search)search.addEventListener("input",updateRoomTable);if(filter)filter.addEventListener("change",updateRoomTable);
+ const add=document.getElementById("showAddRoom");
+ if(add)add.addEventListener("click",()=>{document.getElementById("modalRoot")?.remove();const div=document.createElement("div");div.id="modalRoot";div.style.cssText="position:fixed;inset:0;background:#12243b88;display:grid;place-items:center;padding:18px;z-index:20";div.innerHTML=`<section class="panel" style="width:min(100%,520px);margin:0"><h2>Thêm phòng mới</h2><div class="form-grid" style="margin-top:18px"><div class="field"><label>Mã phòng</label><input id="newRoomName" placeholder="P.501"></div><div class="field"><label>Tầng</label><input id="newRoomFloor" type="number" placeholder="5"></div><div class="field"><label>Giá thuê (VNĐ)</label><input id="newRoomPrice" type="number" placeholder="4000000"></div><div class="field"><label>Trạng thái</label><select id="newRoomStatus"><option>Trống</option><option>Đang thuê</option></select></div></div><div class="form-actions"><button class="secondary" id="closeModal">Hủy</button><button class="primary" id="saveRoom">Lưu phòng</button></div></section>`;document.body.appendChild(div);document.getElementById("closeModal").onclick=()=>div.remove();document.getElementById("saveRoom").onclick=()=>{const name=document.getElementById("newRoomName").value.trim(),floor=document.getElementById("newRoomFloor").value.trim(),price=Number(document.getElementById("newRoomPrice").value),status=document.getElementById("newRoomStatus").value;if(!name||!floor||price<=0){toast("Vui lòng nhập đầy đủ thông tin hợp lệ.");return}if(rooms.some(r=>r.name.toLowerCase()===name.toLowerCase())){toast("Mã phòng đã tồn tại.");return}rooms.push({name,floor,price,status,tenant:status==="Trống"?"—":"Chưa cập nhật"});log("Đã thêm phòng "+name);div.remove();renderPage("rooms");toast("Đã thêm phòng vào dữ liệu demo.")}});
+ document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>renderPage(b.dataset.goto)));
+ document.querySelectorAll("[data-pay]").forEach(b=>b.addEventListener("click",()=>{const bill=bills[Number(b.dataset.pay)];if(bill){bill.status="Đã thanh toán";log("Đánh dấu thanh toán: "+bill.room+" — "+bill.type);renderPage(currentPage);toast("Đã cập nhật trạng thái thanh toán demo.")}}));
+ document.querySelectorAll("[data-repair]").forEach(b=>b.addEventListener("click",()=>{const item=repairs[Number(b.dataset.repair)];if(item){item.status=item.status==="Chờ tiếp nhận"?"Đang xử lý":item.status==="Đang xử lý"?"Đã xử lý":"Đã xử lý";log("Cập nhật yêu cầu sửa chữa "+item.room);renderPage(currentPage);toast("Đã cập nhật trạng thái yêu cầu.")}}));
+ const sr=document.getElementById("showRepair");if(sr)sr.onclick=()=>document.getElementById("repairForm").classList.remove("hidden");
+ const cr=document.getElementById("cancelRepair");if(cr)cr.onclick=()=>document.getElementById("repairForm").classList.add("hidden");
+ const subr=document.getElementById("submitRepair");if(subr)subr.onclick=()=>{const issue=document.getElementById("repairIssue").value.trim();if(!issue){toast("Vui lòng nhập nội dung sự cố.");return}repairs.unshift({room:"P.201",issue,date:new Date().toLocaleDateString("vi-VN"),status:"Chờ tiếp nhận"});log("Gửi yêu cầu sửa chữa P.201");renderPage("repairs");toast("Đã gửi yêu cầu sửa chữa demo.")};
+ const sn=document.getElementById("showNotice");if(sn)sn.onclick=()=>document.getElementById("noticeForm").classList.remove("hidden");
+ const cn=document.getElementById("cancelNotice");if(cn)cn.onclick=()=>document.getElementById("noticeForm").classList.add("hidden");
+ const subn=document.getElementById("submitNotice");if(subn)subn.onclick=()=>{const title=document.getElementById("noticeTitle").value.trim(),body=document.getElementById("noticeBody").value.trim();if(!title||!body){toast("Vui lòng nhập đủ tiêu đề và nội dung.");return}notices.unshift({title,body,date:new Date().toLocaleDateString("vi-VN")});log("Đăng thông báo: "+title);renderPage("notices");toast("Đã đăng thông báo demo.")};
 }
-renderRooms();
 </script>
 </body>
 </html>
