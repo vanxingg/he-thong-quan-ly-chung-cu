@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Apartment - Quản lý chung cư</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#24334b}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:235px;background:#142c4e;color:white;padding:25px 16px;flex-shrink:0}
+.brand{font-size:19px;font-weight:bold;margin:0 8px 8px}
+.sub{font-size:12px;color:#b9cbe3;margin:0 8px 28px}
+.nav{display:block;width:100%;padding:13px 12px;margin:5px 0;border:0;border-radius:8px;background:transparent;color:#dce7f5;text-align:left;cursor:pointer;font-size:14px}
+.nav:hover,.nav.active{background:#28538a;color:white}
+.main{flex:1;min-width:0;padding:28px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+h1{font-size:25px;margin:0 0 7px}
+.muted{color:#78869a;font-size:13px}
+.user{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:12px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:24px}
+.card,.panel{background:white;border:1px solid #e6ebf2;border-radius:13px;padding:20px}
+.card p{font-size:13px;color:#78869a;margin:0 0 12px}
+.number{font-size:29px;font-weight:bold;color:#1c3c65}
+.panel{margin-bottom:20px;overflow:hidden}
+.panelhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:17px}
+h2{font-size:17px;margin:0}
+input,select{padding:10px;border:1px solid #d8e0eb;border-radius:7px;background:white;max-width:100%}
+button.primary{background:#2463a6;color:white;border:0;border-radius:7px;padding:11px 15px;cursor:pointer}
+button.primary:hover{background:#194d87}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px}
+th,td{padding:14px 12px;text-align:left;border-bottom:1px solid #edf0f5}
+th{background:#f8fafc;color:#64748b;font-weight:600}
+.status{padding:5px 9px;border-radius:20px;font-size:12px}
+.occupied{background:#dff7e9;color:#18794e}
+.empty{background:#e2edff;color:#245db4}
+.hidden{display:none}
+.formrow{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.formrow input,.formrow select{flex:1;min-width:140px}
+.notice{padding:14px;background:#f2f7ff;border-radius:8px;margin:10px 0;font-size:14px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.layout{display:block}.sidebar{width:100%;padding:17px}.sub{margin-bottom:12px}.nav{display:inline-block;width:auto;margin:3px;padding:10px}.main{padding:18px 12px}.cards{gap:9px}.card{padding:14px}.number{font-size:23px}h1{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand">⌂ Smart Apartment</div>
+  <p class="sub">HỆ THỐNG QUẢN LÝ CHUNG CƯ</p>
+  <button class="nav active" data-page="overview">▦ Tổng quan</button>
+  <button class="nav" data-page="rooms">▤ Quản lý phòng</button>
+  <button class="nav" data-page="tenants">♙ Người thuê</button>
+  <button class="nav" data-page="bills">▣ Hóa đơn</button>
+  <button class="nav" data-page="repairs">⚒ Yêu cầu sửa chữa</button>
+  <button class="nav" data-page="notices">♧ Thông báo</button>
+  <button class="nav" data-page="accounts">⚙ Tài khoản</button>
+</aside>
+
+<main class="main">
+<header class="top">
+  <div>
+    <h1 id="pageTitle">Tổng quan hệ thống</h1>
+    <div class="muted">Theo dõi và quản lý chung cư của bạn</div>
+  </div>
+  <div class="user">♙ Chủ chung cư</div>
+</header>
+
+<section id="overview">
+  <div class="cards">
+    <div class="card"><p>Tổng số phòng</p><div class="number" id="total">12</div></div>
+    <div class="card"><p>Phòng đang thuê</p><div class="number" id="rented">9</div></div>
+    <div class="card"><p>Phòng còn trống</p><div class="number" id="vacant">3</div></div>
+    <div class="card"><p>Hóa đơn chưa thu</p><div class="number">4</div></div>
+  </div>
+  <div class="panel">
+    <div class="panelhead"><h2>Tình trạng phòng gần đây</h2><button class="primary" onclick="showPage('rooms')">Quản lý phòng →</button></div>
+    <p class="muted">Chào mừng bạn đến với hệ thống quản lý chung cư thông minh.</p>
+    <div class="notice">📌 Bạn có thể theo dõi phòng, người thuê và các khoản phí tại menu bên trái.</div>
+  </div>
+</section>
+
+<section id="rooms" class="hidden">
+  <div class="panel">
+    <div class="panelhead">
+      <h2>Danh sách phòng</h2>
+      <button class="primary" onclick="toggleForm()">+ Thêm phòng</button>
+    </div>
+    <div id="addForm" class="hidden">
+      <div class="formrow">
+        <input id="roomName" placeholder="Tên phòng, ví dụ: P.301">
+        <input id="roomPrice" type="number" placeholder="Giá thuê (VNĐ)">
+        <select id="roomStatus"><option>Trống</option><option>Đang thuê</option></select>
+        <button class="primary" onclick="addRoom()">Lưu phòng</button>
+      </div>
+    </div>
+    <div class="formrow">
+      <input id="search" placeholder="Tìm theo tên phòng..." oninput="renderRooms()">
+      <select id="filter" onchange="renderRooms()"><option value="">Tất cả trạng thái</option><option>Đang thuê</option><option>Trống</option></select>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Phòng</th><th>Giá thuê/tháng</th><th>Trạng thái</th></tr></thead>
+      <tbody id="roomRows"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="tenants" class="hidden"><div class="panel"><h2>Quản lý người thuê</h2><div class="notice">Nguyễn Minh Anh — Phòng 201 — Đại diện người thuê</div><div class="notice">Trần Thu Hà — Phòng 202 — Người thuê</div><div class="notice">Lê Hoàng Nam — Phòng 301 — Người thuê</div></div></section>
+
+<section id="bills" class="hidden"><div class="panel"><h2>Quản lý hóa đơn</h2><div class="tablewrap"><table><thead><tr><th>Phòng</th><th>Khoản phí</th><th>Số tiền</th><th>Trạng thái</th></tr></thead><tbody><tr><td>201</td><td>Điện, nước</td><td>650.000đ</td><td>Chưa thanh toán</td></tr><tr><td>202</td><td>Tiền thuê</td><td>3.500.000đ</td><td>Chưa thanh toán</td></tr><tr><td>301</td><td>Điện, nước</td><td>520.000đ</td><td>Đã thanh toán</td></tr></tbody></table></div><p class="muted">Số liệu chỉ để minh họa.</p></div></section>
+
+<section id="repairs" class="hidden"><div class="panel"><h2>Yêu cầu sửa chữa</h2><div class="notice">Phòng 201 — Kiểm tra vòi nước — Đang xử lý</div><div class="notice">Phòng 302 — Đèn hành lang — Chờ tiếp nhận</div><button class="primary" onclick="alert('Đây là giao diện minh họa yêu cầu sửa chữa.')">Tạo yêu cầu mẫu</button></div></section>
+
+<section id="notices" class="hidden"><div class="panel"><h2>Thông báo chung cư</h2><div class="notice">📢 Thông báo đóng tiền điện nước trước ngày 10 hằng tháng.</div><div class="notice">📢 Vui lòng giữ gìn vệ sinh khu vực chung.</div></div></section>
+
+<section id="accounts" class="hidden"><div class="panel"><h2>Quản lý tài khoản</h2><div class="notice">Chủ chung cư — Quản lý phòng, hóa đơn và thông báo.</div><div class="notice">Người đại diện thuê phòng — Theo dõi phí và gửi yêu cầu sửa chữa.</div><div class="notice">Quản trị hệ thống — Quản lý tài khoản và phân quyền.</div><p class="muted">Chức năng phân quyền thực tế chưa được kết nối.</p></div></section>
+
+</main>
+</div>
+
+<script>
+let rooms = [
+ {name:"P.201",price:3500000,status:"Đang thuê"},
+ {name:"P.202",price:3500000,status:"Đang thuê"},
+ {name:"P.203",price:3200000,status:"Trống"},
+ {name:"P.301",price:3800000,status:"Đang thuê"},
+ {name:"P.302",price:3800000,status:"Trống"},
+ {name:"P.303",price:3500000,status:"Đang thuê"},
+ {name:"P.401",price:4000000,status:"Đang thuê"},
+ {name:"P.402",price:4000000,status:"Trống"},
+ {name:"P.403",price:3700000,status:"Đang thuê"},
+ {name:"P.501",price:4200000,status:"Đang thuê"},
+ {name:"P.502",price:4200000,status:"Đang thuê"},
+ {name:"P.503",price:3900000,status:"Đang thuê"}
+];
+
+function showPage(page){
+ document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
+ document.getElementById(page).classList.remove("hidden");
+ document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+ const titles={overview:"Tổng quan hệ thống",rooms:"Quản lý phòng",tenants:"Quản lý người thuê",bills:"Quản lý hóa đơn",repairs:"Yêu cầu sửa chữa",notices:"Thông báo",accounts:"Quản lý tài khoản"};
+ document.getElementById("pageTitle").textContent=titles[page];
+}
+document.querySelectorAll(".nav").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+
+function renderRooms(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const f=document.getElementById("filter").value;
+ document.getElementById("roomRows").innerHTML=rooms.filter(r=>r.name.toLowerCase().includes(q)&&(!f||r.status===f)).map(r=>`<tr><td>${r.name}</td><td>${r.price.toLocaleString("vi-VN")}đ</td><td><span class="status ${r.status==="Trống"?"empty":"occupied"}">${r.status}</span></td></tr>`).join("");
+ document.getElementById("total").textContent=rooms.length;
+ document.getElementById("rented").textContent=rooms.filter(r=>r.status==="Đang thuê").length;
+ document.getElementById("vacant").textContent=rooms.filter(r=>r.status==="Trống").length;
+}
+function toggleForm(){document.getElementById("addForm").classList.toggle("hidden")}
+function addRoom(){
+ const name=document.getElementById("roomName").value.trim();
+ const price=Number(document.getElementById("roomPrice").value);
+ const status=document.getElementById("roomStatus").value;
+ if(!name||price<=0){alert("Vui lòng nhập tên phòng và giá thuê hợp lệ.");return}
+ if(rooms.some(r=>r.name.toLowerCase()===name.toLowerCase())){alert("Tên phòng đã tồn tại.");return}
+ rooms.push({name,price,status});
+ document.getElementById("roomName").value="";
+ document.getElementById("roomPrice").value="";
+ renderRooms();
+ alert("Đã thêm phòng vào giao diện mẫu.");
+}
+renderRooms();
+</script>
+</body>
+</html>
