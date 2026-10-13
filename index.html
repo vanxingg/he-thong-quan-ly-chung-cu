@@ -140,14 +140,18 @@ th,td{padding:15px 14px}
 }
 
 
-/* Công cụ tự điều chỉnh cỡ chữ */
-#fontControls{position:fixed;left:16px;bottom:16px;z-index:1000;display:flex;align-items:center;gap:7px;padding:8px 10px;background:#fff;border:1px solid #d8e2ef;border-radius:14px;box-shadow:0 5px 22px #16345420;color:#24344d;font-size:14px}
-#fontControls span{font-weight:700;margin-right:2px}
-#fontControls button{min-width:36px;height:36px;padding:0 9px;border:1px solid #dbe3ed;border-radius:9px;background:#f7faff;color:#24476f;font-size:18px;font-weight:750}
+/* Công cụ cỡ chữ dạng nút nổi gọn, chỉ mở khi cần */
+#fontWidget{position:fixed;right:22px;bottom:22px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;gap:9px;font-size:14px;font-family:inherit}
+#fontToggle{width:44px;height:44px;border:1px solid #ffffffb8;border-radius:50%;background:#17365b;color:#fff;box-shadow:0 4px 14px #16345426;font-size:15px;font-weight:800;cursor:pointer;transition:transform .18s,background .18s;display:flex;align-items:center;justify-content:center}
+#fontToggle:hover{background:#245181;transform:translateY(-2px)}
+#fontControls{display:none;align-items:center;gap:7px;padding:8px 9px;background:#fff;border:1px solid #d8e2ef;border-radius:13px;box-shadow:0 5px 20px #1634541c;color:#24344d}
+#fontWidget.open #fontControls{display:flex}
+#fontControls span{font-weight:700;margin-right:2px;white-space:nowrap}
+#fontControls button{min-width:36px;height:36px;padding:0 9px;border:1px solid #dbe3ed;border-radius:9px;background:#f7faff;color:#24476f;font-size:18px;font-weight:750;cursor:pointer}
 #fontControls button:hover{background:#eaf2ff}
 #fontControls #fontReset{font-size:12px;min-width:auto;font-weight:650}
 body.font-resizable *{font-size:calc(var(--base-font-size, 16px) * var(--font-scale, 1)) !important}
-@media(max-width:700px){#fontControls{left:8px;bottom:8px;gap:5px;padding:6px 7px}#fontControls button{min-width:32px;height:32px}#fontControls span{font-size:12px!important}}
+@media(max-width:700px){#fontWidget{right:13px;bottom:13px}#fontToggle{width:40px;height:40px}#fontControls{gap:5px;padding:7px}#fontControls button{min-width:32px;height:32px}#fontControls span{font-size:12px!important}}
 
 </style>
 </head>
@@ -329,11 +333,14 @@ function bindPageActions(){
 }
 </script>
 
-<div id="fontControls" role="group" aria-label="Điều chỉnh cỡ chữ">
-  <span>Cỡ chữ</span>
-  <button type="button" id="fontDecrease" aria-label="Giảm cỡ chữ" title="Giảm cỡ chữ">A−</button>
-  <button type="button" id="fontIncrease" aria-label="Tăng cỡ chữ" title="Tăng cỡ chữ">A+</button>
-  <button type="button" id="fontReset" title="Đặt lại cỡ chữ">Mặc định</button>
+<div id="fontWidget">
+  <div id="fontControls" role="group" aria-label="Điều chỉnh cỡ chữ">
+    <span>Cỡ chữ</span>
+    <button type="button" id="fontDecrease" aria-label="Giảm cỡ chữ" title="Giảm cỡ chữ">A−</button>
+    <button type="button" id="fontIncrease" aria-label="Tăng cỡ chữ" title="Tăng cỡ chữ">A+</button>
+    <button type="button" id="fontReset" title="Đặt lại cỡ chữ">Mặc định</button>
+  </div>
+  <button type="button" id="fontToggle" aria-label="Mở điều chỉnh cỡ chữ" aria-expanded="false" title="Điều chỉnh cỡ chữ">Aa</button>
 </div>
 <script>
 (function(){
@@ -362,6 +369,16 @@ function bindPageActions(){
     const label=document.getElementById('fontControls');
     if(label)label.setAttribute('aria-label','Cỡ chữ hiện tại '+Math.round(scale*100)+'%');
   }
+  const widget=document.getElementById('fontWidget');
+  const toggle=document.getElementById('fontToggle');
+  toggle.addEventListener('click',()=>{
+    const open=widget.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'Đóng điều chỉnh cỡ chữ':'Mở điều chỉnh cỡ chữ');
+    toggle.title=open?'Đóng điều chỉnh cỡ chữ':'Điều chỉnh cỡ chữ';
+  });
+  document.addEventListener('click',event=>{if(!widget.contains(event.target)){widget.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Mở điều chỉnh cỡ chữ');toggle.title='Điều chỉnh cỡ chữ';}});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){widget.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Mở điều chỉnh cỡ chữ');toggle.title='Điều chỉnh cỡ chữ';}});
   document.getElementById('fontDecrease').addEventListener('click',()=>{scale=Math.max(minScale,Math.round((scale-step)*100)/100);applyScale()});
   document.getElementById('fontIncrease').addEventListener('click',()=>{scale=Math.min(maxScale,Math.round((scale+step)*100)/100);applyScale()});
   document.getElementById('fontReset').addEventListener('click',()=>{scale=1;applyScale()});
