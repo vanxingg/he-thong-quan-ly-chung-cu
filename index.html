@@ -139,6 +139,16 @@ th,td{padding:15px 14px}
  .panel h2{font-size:17px}
 }
 
+
+/* Công cụ tự điều chỉnh cỡ chữ */
+#fontControls{position:fixed;left:16px;bottom:16px;z-index:1000;display:flex;align-items:center;gap:7px;padding:8px 10px;background:#fff;border:1px solid #d8e2ef;border-radius:14px;box-shadow:0 5px 22px #16345420;color:#24344d;font-size:14px}
+#fontControls span{font-weight:700;margin-right:2px}
+#fontControls button{min-width:36px;height:36px;padding:0 9px;border:1px solid #dbe3ed;border-radius:9px;background:#f7faff;color:#24476f;font-size:18px;font-weight:750}
+#fontControls button:hover{background:#eaf2ff}
+#fontControls #fontReset{font-size:12px;min-width:auto;font-weight:650}
+body.font-resizable *{font-size:calc(var(--base-font-size, 16px) * var(--font-scale, 1)) !important}
+@media(max-width:700px){#fontControls{left:8px;bottom:8px;gap:5px;padding:6px 7px}#fontControls button{min-width:32px;height:32px}#fontControls span{font-size:12px!important}}
+
 </style>
 </head>
 <body>
@@ -318,5 +328,53 @@ function bindPageActions(){
  const subn=document.getElementById("submitNotice");if(subn)subn.onclick=()=>{const title=document.getElementById("noticeTitle").value.trim(),body=document.getElementById("noticeBody").value.trim();if(!title||!body){toast("Vui lòng nhập đủ tiêu đề và nội dung.");return}notices.unshift({title,body,date:new Date().toLocaleDateString("vi-VN")});log("Đăng thông báo: "+title);renderPage("notices");toast("Đã đăng thông báo demo.")};
 }
 </script>
+
+<div id="fontControls" role="group" aria-label="Điều chỉnh cỡ chữ">
+  <span>Cỡ chữ</span>
+  <button type="button" id="fontDecrease" aria-label="Giảm cỡ chữ" title="Giảm cỡ chữ">A−</button>
+  <button type="button" id="fontIncrease" aria-label="Tăng cỡ chữ" title="Tăng cỡ chữ">A+</button>
+  <button type="button" id="fontReset" title="Đặt lại cỡ chữ">Mặc định</button>
+</div>
+<script>
+(function(){
+  const root=document.documentElement;
+  const body=document.body;
+  const minScale=0.85,maxScale=1.4,step=0.1;
+  let scale=1;
+  try{const saved=Number(localStorage.getItem('smartApartmentFontScale'));if(saved>=minScale&&saved<=maxScale)scale=saved;}catch(e){}
+  function saveBaseSizes(container){
+    const nodes=[];
+    if(container.nodeType===1)nodes.push(container);
+    if(container.querySelectorAll)nodes.push(...container.querySelectorAll('*'));
+    nodes.forEach(el=>{
+      if(!el.style.getPropertyValue('--base-font-size')){
+        const size=parseFloat(getComputedStyle(el).fontSize);
+        if(Number.isFinite(size))el.style.setProperty('--base-font-size',size+'px');
+      }
+    });
+  }
+  // Ghi nhận cỡ chữ gốc trước khi bật chế độ thay đổi.
+  saveBaseSizes(body);
+  function applyScale(){
+    body.classList.add('font-resizable');
+    body.style.setProperty('--font-scale',String(scale));
+    try{localStorage.setItem('smartApartmentFontScale',String(scale));}catch(e){}
+    const label=document.getElementById('fontControls');
+    if(label)label.setAttribute('aria-label','Cỡ chữ hiện tại '+Math.round(scale*100)+'%');
+  }
+  document.getElementById('fontDecrease').addEventListener('click',()=>{scale=Math.max(minScale,Math.round((scale-step)*100)/100);applyScale()});
+  document.getElementById('fontIncrease').addEventListener('click',()=>{scale=Math.min(maxScale,Math.round((scale+step)*100)/100);applyScale()});
+  document.getElementById('fontReset').addEventListener('click',()=>{scale=1;applyScale()});
+  applyScale();
+  // Ghi nhận cỡ chữ gốc cho nội dung được tạo thêm khi chuyển trang.
+  const observer=new MutationObserver(records=>{
+    const added=[];
+    records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1&&node.id!=='fontControls')added.push(node)}));
+    if(added.length){body.classList.remove('font-resizable');added.forEach(saveBaseSizes);applyScale();}
+  });
+  observer.observe(body,{childList:true,subtree:true});
+})();
+</script>
+
 </body>
 </html>
