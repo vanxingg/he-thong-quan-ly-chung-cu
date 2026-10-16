@@ -76,101 +76,6 @@ th{font-size:13px}
   table{font-size:13px}
   th{font-size:12px}
 }
-
-/* TANG CO CHU - PHIEN BAN DE DOC HON */
-body{font-size:17px}
-.logo{font-size:23px}
-.art-copy .eyebrow{font-size:14px}
-.art-copy p{font-size:18px}
-.feature{font-size:16px}
-.art-foot{font-size:14px}
-.login-card h2{font-size:34px}
-.subtext{font-size:17px}
-.field label{font-size:16px}
-.field input,.field select,.field textarea{font-size:17px;padding:15px 16px}
-.show-pass{font-size:14px}
-.primary{font-size:16px;padding:15px 18px}
-.demo-title{font-size:14px}
-.demo-account{font-size:14px}
-.demo-account button{font-size:14px;padding:8px 10px}
-.security-note{font-size:13px}
-.side-brand{font-size:18px}
-.side-sub{font-size:12px}
-.side-user strong{font-size:15px}
-.side-user small{font-size:13px}
-.nav-label{font-size:12px}
-.nav{font-size:15px;padding:14px 12px}
-.top-title{font-size:23px}
-.role-chip{font-size:14px}
-.logout{font-size:14px;padding:11px 14px}
-.welcome h1{font-size:30px}
-.welcome p{font-size:16px}
-.date-pill{font-size:14px;padding:12px 14px}
-.stat{padding:22px}
-.stat-top{font-size:14px}
-.stat-icon{width:42px;height:42px;font-size:21px}
-.stat-num{font-size:34px}
-.stat-foot{font-size:13px}
-.panel{padding:24px}
-.panel h2{font-size:19px}
-.muted{font-size:14px}
-table{font-size:15px}
-th{font-size:13px}
-th,td{padding:15px 14px}
-.status{font-size:13px;padding:6px 10px}
-.notice strong{font-size:15px}
-.notice p{font-size:14px}
-.notice-icon{width:40px;height:40px;font-size:18px}
-.toolbar input,.toolbar select,.secondary{font-size:14px;padding:12px 14px}
-.role-card h3{font-size:16px}
-.role-card p{font-size:14px}
-.empty-state{font-size:15px}
-@media(max-width:700px){
- body{font-size:16px}
- .nav{font-size:14px;padding:11px 10px}
- .top-title{font-size:18px}
- .welcome h1{font-size:25px}
- .welcome p{font-size:15px}
- .stat-num{font-size:28px}
- .stat-top{font-size:12px}
- .stat-foot{font-size:12px}
- table{font-size:14px}
- th{font-size:12px}
- .panel h2{font-size:17px}
-}
-
-
-/* Công cụ cỡ chữ dạng nút nổi gọn, chỉ mở khi cần */
-#fontWidget{position:fixed;right:22px;bottom:22px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;gap:9px;font-size:14px;font-family:inherit}
-#fontToggle{width:44px;height:44px;border:1px solid #ffffffb8;border-radius:50%;background:#17365b;color:#fff;box-shadow:0 4px 14px #16345426;font-size:15px;font-weight:800;cursor:pointer;transition:transform .18s,background .18s;display:flex;align-items:center;justify-content:center}
-#fontToggle:hover{background:#245181;transform:translateY(-2px)}
-#fontControls{display:none;align-items:center;gap:7px;padding:8px 9px;background:#fff;border:1px solid #d8e2ef;border-radius:13px;box-shadow:0 5px 20px #1634541c;color:#24344d}
-#fontWidget.open #fontControls{display:flex}
-#fontControls span{font-weight:700;margin-right:2px;white-space:nowrap}
-#fontControls button{min-width:36px;height:36px;padding:0 9px;border:1px solid #dbe3ed;border-radius:9px;background:#f7faff;color:#24476f;font-size:18px;font-weight:750;cursor:pointer}
-#fontControls button:hover{background:#eaf2ff}
-#fontControls #fontReset{font-size:12px;min-width:auto;font-weight:650}
-body.font-resizable *{font-size:calc(var(--base-font-size, 16px) * var(--font-scale, 1)) !important}
-@media(max-width:700px){#fontWidget{right:13px;bottom:13px}#fontToggle{width:40px;height:40px}#fontControls{gap:5px;padding:7px}#fontControls button{min-width:32px;height:32px}#fontControls span{font-size:12px!important}}
-
-
-/* Banner tong quan: hien dai, nhe va dong bo voi mau navy */
-.overview-hero{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 32px;margin-bottom:24px;border-radius:18px;background:linear-gradient(115deg,#17365d 0%,#24578b 62%,#3678b6 100%);color:#fff;box-shadow:0 10px 26px rgba(23,54,93,.10)}
-.overview-hero:before{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff20;border-radius:50%;right:90px;top:-150px}
-.overview-hero:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff20;border-radius:50%;right:125px;top:-112px}
-.overview-hero-copy{position:relative;z-index:1;max-width:720px}
-.overview-kicker{font-size:12px;font-weight:750;letter-spacing:1.8px;text-transform:uppercase;color:#bcdcff;margin-bottom:9px}
-.overview-hero h1{font-size:clamp(24px,2.5vw,32px);line-height:1.25;margin:0 0 9px;color:#fff}
-.overview-hero p{font-size:15px;line-height:1.65;color:#e0edfb;margin:0;max-width:620px}
-.overview-hero-date{position:relative;z-index:1;white-space:nowrap;align-self:flex-start;border:1px solid #ffffff30;background:#ffffff15;color:#fff;border-radius:11px;padding:10px 13px;font-size:13px}
-.overview-building{position:relative;z-index:1;flex-shrink:0;width:110px;height:100px;display:flex;align-items:flex-end;justify-content:center;gap:7px}
-.overview-building .tower{position:relative;background:linear-gradient(180deg,#f7fbff,#cfe4fa);border:1px solid #ffffff70;border-radius:7px 7px 2px 2px;box-shadow:0 8px 18px #102a4933}
-.overview-building .tower:after{content:"";position:absolute;inset:12px 8px;background:repeating-linear-gradient(90deg,transparent 0 10px,#4c83b5 10px 14px),repeating-linear-gradient(0deg,transparent 0 12px,#4c83b5 12px 16px);opacity:.85}
-.overview-building .tower.one{width:38px;height:72px}.overview-building .tower.two{width:48px;height:94px}.overview-building .tower.three{width:27px;height:57px}
-@media(max-width:700px){.overview-hero{padding:22px 20px;min-height:150px}.overview-hero-date{position:absolute;right:14px;bottom:12px;font-size:11px;padding:7px 9px}.overview-hero-copy{padding-bottom:25px}.overview-hero h1{font-size:23px}.overview-hero p{font-size:14px;padding-right:2px}.overview-building{width:65px;height:70px;opacity:.85;gap:4px}.overview-building .tower.one{width:23px;height:47px}.overview-building .tower.two{width:29px;height:61px}.overview-building .tower.three{width:17px;height:37px}.overview-building .tower:after{inset:8px 5px;background:repeating-linear-gradient(90deg,transparent 0 7px,#4c83b5 7px 10px),repeating-linear-gradient(0deg,transparent 0 9px,#4c83b5 9px 12px)}}
-
-.quick-actions{display:flex;flex-direction:column;gap:10px}.quick-actions button{text-align:left;justify-content:flex-start}
-@media(max-width:600px){.quick-actions button{white-space:normal}}
 </style>
 </head>
 <body>
@@ -234,11 +139,11 @@ const USERS={
  tenant:{password:"Tenant123",name:"Nguyễn Minh Anh",role:"tenant",roleName:"Đại diện thuê phòng",initial:"NA"}
 };
 const MENUS={
- admin:[["overview","▦","Tổng quan"],["accounts","♙","Quản lý tài khoản"],["activity","◷","Nhật ký hoạt động"],["system","⚙","Quản lý dữ liệu & cấu hình"],["maintenance","⟳","Bảo trì & sao lưu"]],
+ admin:[["overview","▦","Tổng quan"],["finance","₫","Doanh thu & thuế"],["accounts","♙","Quản lý tài khoản"],["activity","◷","Nhật ký hoạt động"],["system","⚙","Cài đặt hệ thống"]],
  owner:[["overview","▦","Tổng quan"],["rooms","▤","Quản lý phòng"],["tenants","♙","Người thuê"],["bills","▣","Hóa đơn"],["repairs","⚒","Yêu cầu sửa chữa"],["notices","♧","Thông báo"]],
  tenant:[["overview","▦","Tổng quan"],["myroom","⌂","Thông tin phòng"],["bills","▣","Hóa đơn của tôi"],["history","◷","Lịch sử thanh toán"],["repairs","⚒","Yêu cầu sửa chữa"],["notices","♧","Thông báo"]]
 };
-const TITLES={overview:"Tổng quan",accounts:"Quản lý tài khoản",activity:"Nhật ký hoạt động",system:"Quản lý dữ liệu và cấu hình hệ thống",maintenance:"Bảo trì, sao lưu và an toàn hệ thống",rooms:"Quản lý phòng",tenants:"Quản lý người thuê",bills:"Hóa đơn",repairs:"Yêu cầu sửa chữa",notices:"Thông báo",myroom:"Thông tin phòng",history:"Lịch sử thanh toán"};
+const TITLES={overview:"Tổng quan",finance:"Doanh thu & thuế",accounts:"Quản lý tài khoản",activity:"Nhật ký hoạt động",system:"Cài đặt hệ thống",rooms:"Quản lý phòng",tenants:"Quản lý người thuê",bills:"Hóa đơn",repairs:"Yêu cầu sửa chữa",notices:"Thông báo",myroom:"Thông tin phòng",history:"Lịch sử thanh toán"};
 let currentUser=null,currentPage="overview",toastTimer=null;
 let rooms=[
  {name:"P.201",floor:"2",price:3500000,status:"Đang thuê",tenant:"Nguyễn Minh Anh"},
@@ -265,6 +170,16 @@ let notices=[
  {title:"Vệ sinh khu vực chung",body:"Đề nghị cư dân giữ gìn vệ sinh hành lang và khu vực để xe.",date:"07/10/2026"}
 ];
 let activity=["Hệ thống được khởi tạo với dữ liệu minh họa."];
+// Dữ liệu tài chính minh họa để quản trị viên xem báo cáo tổng hợp.
+let financeRecords=[
+ {building:"Chung cư Mini A",type:"personal",yearRevenue:1200000000,monthRevenue:28500000,expenses:8200000,taxPaid:0,taxDeclared:0},
+ {building:"Tòa nhà B (Công ty) ",type:"business",yearRevenue:2400000000,monthRevenue:42000000,expenses:27000000,taxPaid:0,taxDeclared:0}
+];
+let financeCosts=[
+ {building:"Chung cư Mini A",category:"Sửa chữa, bảo trì",amount:2500000,date:"05/10/2026",note:"Sửa vòi nước và đèn hành lang"},
+ {building:"Chung cư Mini A",category:"Vệ sinh, khu vực chung",amount:1700000,date:"08/10/2026",note:"Chi phí vệ sinh"},
+ {building:"Chung cư Mini A",category:"Internet, dịch vụ",amount:4000000,date:"10/10/2026",note:"Các khoản dịch vụ chung"}
+];
 function money(n){return Number(n).toLocaleString("vi-VN")+" ₫"}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.remove("hidden");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add("hidden"),2600)}
@@ -280,14 +195,14 @@ function pill(s){return `<span class="status ${statusClass(s)}">${esc(s)}</span>
 function stats(items){return `<div class="stats">${items.map(x=>`<div class="stat"><div class="stat-top"><span>${x.label}</span><span class="stat-icon">${x.icon}</span></div><div class="stat-num">${x.value}</div><div class="stat-foot">${x.foot||"Cập nhật theo dữ liệu minh họa"}</div></div>`).join("")}</div>`}
 function panel(title,body,action=""){return `<section class="panel"><div class="panel-head"><h2>${title}</h2>${action}</div>${body}</section>`}
 function roomTable(list=rooms){return `<div class="table-wrap"><table><thead><tr><th>Phòng</th><th>Tầng</th><th>Giá thuê/tháng</th><th>Người thuê đại diện</th><th>Trạng thái</th></tr></thead><tbody>${list.map(r=>`<tr><td><strong>${esc(r.name)}</strong></td><td>${esc(r.floor)}</td><td>${money(r.price)}</td><td>${esc(r.tenant)}</td><td>${pill(r.status)}</td></tr>`).join("")||'<tr><td colspan="5" class="empty-state">Không tìm thấy phòng phù hợp.</td></tr>'}</tbody></table></div>`}
-function billTable(list){return `<div class="table-wrap"><table><thead><tr><th>Phòng</th><th>Khoản phí</th><th>Số tiền</th><th>Trạng thái</th>${currentUser.role==="tenant"?"<th>Thao tác</th>":""}</tr></thead><tbody>${list.map((b,i)=>`<tr><td>${esc(b.room)}</td><td>${esc(b.type)}</td><td>${money(b.amount)}</td><td>${pill(b.status)}</td>${currentUser.role==="tenant"?`<td>${b.status!=="Đã thanh toán"?`<button class="primary" data-pay="${bills.indexOf(b)}">Thanh toán</button>`:"—"}</td>`:""}</tr>`).join("")||'<tr><td colspan="5" class="empty-state">Chưa có hóa đơn.</td></tr>'}</tbody></table></div>`}
+function billTable(list){return `<div class="table-wrap"><table><thead><tr><th>Phòng</th><th>Khoản phí</th><th>Số tiền</th><th>Trạng thái</th>${currentUser.role==="tenant"?"<th>Thao tác</th>":""}</tr></thead><tbody>${list.map((b,i)=>`<tr><td>${esc(b.room)}</td><td>${esc(b.type)}</td><td>${money(b.amount)}</td><td>${pill(b.status)}</td>${currentUser.role==="tenant"?`<td>${b.status!=="Đã thanh toán"?`<button class="secondary" data-pay="${bills.indexOf(b)}">Đánh dấu đã trả</button>`:"—"}</td>`:""}</tr>`).join("")||'<tr><td colspan="5" class="empty-state">Chưa có hóa đơn.</td></tr>'}</tbody></table></div>`}
 function repairTable(list){return `<div class="table-wrap"><table><thead><tr><th>Phòng</th><th>Nội dung</th><th>Ngày gửi</th><th>Trạng thái</th>${currentUser.role==="owner"?"<th>Thao tác</th>":""}</tr></thead><tbody>${list.map((r,i)=>`<tr><td>${esc(r.room)}</td><td>${esc(r.issue)}</td><td>${esc(r.date)}</td><td>${pill(r.status)}</td>${currentUser.role==="owner"?`<td><button class="secondary" data-repair="${i}">Cập nhật trạng thái</button></td>`:""}</tr>`).join("")||'<tr><td colspan="5" class="empty-state">Chưa có yêu cầu sửa chữa.</td></tr>'}</tbody></table></div>`}
 function overview(){
  const role=currentUser.role;
- let out=`<section class="overview-hero"><div class="overview-hero-copy"><div class="overview-kicker">Smart Apartment · Dashboard</div><h1>Xin chào, ${esc(currentUser.name)} 👋</h1><p>${role==="admin"?"Theo dõi hoạt động và quản trị hệ thống chung cư trong một nơi.":role==="owner"?"Quản lý phòng, người thuê và vận hành chung cư dễ dàng hơn.":"Xem thông tin phòng, theo dõi hóa đơn và kết nối với ban quản lý."}</p></div><div class="overview-building" aria-hidden="true"><span class="tower one"></span><span class="tower two"></span><span class="tower three"></span></div><span class="overview-hero-date">📅 ${new Date().toLocaleDateString("vi-VN")}</span></section>`;
+ let out=`<div class="welcome"><div><h1>Xin chào, ${esc(currentUser.name)} 👋</h1><p>${role==="admin"?"Tổng quan vận hành và quản trị hệ thống.":role==="owner"?"Theo dõi tình hình hoạt động chung cư của bạn.":"Theo dõi thông tin thuê phòng và các dịch vụ chung cư."}</p></div><span class="date-pill">📅 ${new Date().toLocaleDateString("vi-VN")}</span></div>`;
  if(role==="admin"){
   out+=stats([{label:"Tổng tài khoản",value:"03",icon:"♙",foot:"3 vai trò demo"},{label:"Vai trò hệ thống",value:"03",icon:"⚿"},{label:"Yêu cầu sửa chữa",value:repairs.length,icon:"⚒"},{label:"Hoạt động gần đây",value:activity.length,icon:"◷"}]);
-  out+=`<div class="grid-two">${panel("Các vai trò hệ thống",`<div class="role-card"><div class="role-symbol" style="background:#efe8ff;color:#7754c8">⚿</div><div><h3>Quản trị viên</h3><p>Quản lý tài khoản, vai trò và theo dõi hoạt động hệ thống.</p></div></div><div class="role-card"><div class="role-symbol" style="background:#fff1df;color:#c97820">⌂</div><div><h3>Chủ chung cư</h3><p>Quản lý phòng, người thuê, hóa đơn, sửa chữa và thông báo.</p></div></div><div class="role-card"><div class="role-symbol" style="background:#e1f7eb;color:#16845b">♙</div><div><h3>Đại diện thuê phòng</h3><p>Xem hóa đơn, lịch sử và gửi yêu cầu sửa chữa.</p></div></div>`)}${panel("Truy cập nhanh",`<div class="quick-actions"><button class="secondary" data-goto="system">⚙ UC17 · Quản lý dữ liệu & cấu hình</button><button class="secondary" data-goto="maintenance">⟳ UC19 · Bảo trì & sao lưu</button></div>`)}${panel("Hoạt động gần đây",activity.slice(0,5).map(a=>`<div class="notice"><div class="notice-icon">◷</div><div><p>${esc(a)}</p></div></div>`).join(""))}</div>`;
+  out+=`<div class="grid-two">${panel("Các vai trò hệ thống",`<div class="role-card"><div class="role-symbol" style="background:#efe8ff;color:#7754c8">⚿</div><div><h3>Quản trị viên</h3><p>Quản lý tài khoản, vai trò và theo dõi hoạt động hệ thống.</p></div></div><div class="role-card"><div class="role-symbol" style="background:#fff1df;color:#c97820">⌂</div><div><h3>Chủ chung cư</h3><p>Quản lý phòng, người thuê, hóa đơn, sửa chữa và thông báo.</p></div></div><div class="role-card"><div class="role-symbol" style="background:#e1f7eb;color:#16845b">♙</div><div><h3>Đại diện thuê phòng</h3><p>Xem hóa đơn, lịch sử và gửi yêu cầu sửa chữa.</p></div></div>`)}${panel("Hoạt động gần đây",activity.slice(0,5).map(a=>`<div class="notice"><div class="notice-icon">◷</div><div><p>${esc(a)}</p></div></div>`).join(""))}</div>`;
  }else if(role==="owner"){
   out+=stats([{label:"Tổng số phòng",value:rooms.length,icon:"▤"},{label:"Đang cho thuê",value:rooms.filter(r=>r.status==="Đang thuê").length,icon:"⌂"},{label:"Phòng còn trống",value:rooms.filter(r=>r.status==="Trống").length,icon:"＋"},{label:"Hóa đơn chưa thu",value:bills.filter(b=>b.status!=="Đã thanh toán").length,icon:"▣"}]);
   out+=`<div class="grid-two">${panel("Tình trạng phòng",roomTable(rooms.slice(0,5)),`<button class="secondary" data-goto="rooms">Xem tất cả →</button>`)}${panel("Thông báo gần đây",notices.map(n=>`<div class="notice"><div class="notice-icon">♧</div><div><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p></div></div>`).join(""))}</div>`;
@@ -320,12 +235,24 @@ function renderPage(page){
  if(page==="notices"){
   out=`<div class="welcome"><div><h1>Thông báo chung cư</h1><p>Các thông tin và nhắc nhở dành cho cư dân.</p></div>${currentUser.role==="owner"?'<button class="primary" id="showNotice">＋ Tạo thông báo</button>':""}</div>${currentUser.role==="owner"?`<section class="panel hidden" id="noticeForm"><h2>Thông báo mới</h2><div class="field"><label>Tiêu đề</label><input id="noticeTitle" placeholder="Nhập tiêu đề"></div><div class="field"><label>Nội dung</label><textarea id="noticeBody" rows="3" placeholder="Nhập nội dung thông báo"></textarea></div><div class="form-actions"><button class="secondary" id="cancelNotice">Hủy</button><button class="primary" id="submitNotice">Đăng thông báo</button></div></section>`:""}${panel("Danh sách thông báo",notices.map(n=>`<div class="notice"><div class="notice-icon">♧</div><div><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p><p style="margin-top:7px">${esc(n.date)}</p></div></div>`).join(""))}`;
  }
+ if(page==="finance"){
+  const totalRevenue=financeRecords.reduce((s,r)=>s+r.monthRevenue,0);
+  const totalCosts=financeRecords.reduce((s,r)=>s+r.expenses,0);
+  const totalDeclared=financeRecords.reduce((s,r)=>s+r.taxDeclared,0);
+  const totalPaid=financeRecords.reduce((s,r)=>s+r.taxPaid,0);
+  const fmtType=t=>t==="personal"?"Cá nhân cho thuê bất động sản":"Doanh nghiệp";
+  out=`<div class="welcome"><div><h1>Doanh thu, chi phí & thuế</h1><p>Quản trị viên xem báo cáo tổng hợp tài chính do các chủ chung cư khai báo.</p></div><button class="primary" id="addFinanceRecord">＋ Thêm hồ sơ</button></div>
+  <div class="role-card" style="margin-bottom:16px"><div class="role-symbol" style="background:#fff1df;color:#c97820">i</div><div><h3>Dữ liệu minh họa</h3><p>Đây là bản demo, chưa kết nối cơ sở dữ liệu hoặc cơ quan thuế. Quản trị viên chỉ nên xem báo cáo tổng hợp được cấp quyền; dữ liệu thuế chi tiết ngoài thực tế cần được bảo vệ và phân quyền.</p></div></div>
+  ${stats([{label:"Tổng doanh thu tháng",value:money(totalRevenue),icon:"↗"},{label:"Tổng chi phí tháng",value:money(totalCosts),icon:"▤"},{label:"Thuế đã kê khai (demo)",value:money(totalDeclared),icon:"▣"},{label:"Thuế đã nộp (demo)",value:money(totalPaid),icon:"✓"}])}
+  <section class="panel hidden" id="financeForm"><h2>Thêm hồ sơ tài chính</h2><div class="form-grid"><div class="field"><label>Tên chung cư / doanh nghiệp</label><input id="finBuilding" placeholder="Ví dụ: Chung cư Mini C"></div><div class="field"><label>Loại hình</label><select id="finType"><option value="personal">Cá nhân cho thuê bất động sản</option><option value="business">Doanh nghiệp</option></select></div><div class="field"><label>Doanh thu tháng (VNĐ)</label><input id="finMonthRevenue" type="number" min="0" placeholder="28500000"></div><div class="field"><label>Doanh thu cả năm (VNĐ)</label><input id="finYearRevenue" type="number" min="0" placeholder="1200000000"></div><div class="field"><label>Chi phí tháng (VNĐ)</label><input id="finExpenses" type="number" min="0" placeholder="8200000"></div><div class="field"><label>Thuế đã kê khai (VNĐ)</label><input id="finDeclared" type="number" min="0" value="0"></div><div class="field"><label>Thuế đã nộp (VNĐ)</label><input id="finPaid" type="number" min="0" value="0"></div></div><p class="muted">Nhập số liệu theo hồ sơ của chủ chung cư. Không nhập thông tin định danh hoặc dữ liệu nhạy cảm không cần thiết.</p><div class="form-actions"><button class="secondary" id="cancelFinance">Hủy</button><button class="primary" id="saveFinance">Lưu hồ sơ demo</button></div></section>
+  ${panel("Danh sách hồ sơ",`<div class="table-wrap"><table><thead><tr><th>Đơn vị</th><th>Loại hình</th><th>Doanh thu tháng</th><th>Doanh thu năm</th><th>Chi phí tháng</th><th>Thuế đã kê khai</th><th>Thuế đã nộp</th></tr></thead><tbody>${financeRecords.map(r=>`<tr><td><strong>${esc(r.building)}</strong></td><td>${esc(fmtType(r.type))}</td><td>${money(r.monthRevenue)}</td><td>${money(r.yearRevenue)}</td><td>${money(r.expenses)}</td><td>${money(r.taxDeclared)}</td><td>${money(r.taxPaid)}</td></tr>`).join("")}</tbody></table></div>`) }
+  <div class="grid-two">${panel("Các khoản chi phí đã ghi nhận",`<div class="table-wrap"><table><thead><tr><th>Đơn vị</th><th>Khoản chi</th><th>Ngày</th><th>Số tiền</th><th>Ghi chú</th></tr></thead><tbody>${financeCosts.map(c=>`<tr><td>${esc(c.building)}</td><td>${esc(c.category)}</td><td>${esc(c.date)}</td><td>${money(c.amount)}</td><td>${esc(c.note)}</td></tr>`).join("")}</tbody></table></div>`)}${panel("Nguyên tắc theo dõi thuế",`<ul style="padding-left:20px;margin:0;line-height:1.8"><li><strong>Cá nhân:</strong> phân loại cho thuê bất động sản thông thường và hoạt động lưu trú; theo dõi doanh thu năm và ngưỡng áp dụng.</li><li><strong>Doanh nghiệp:</strong> theo dõi doanh thu, chi phí hợp lệ, thu nhập chịu thuế và thuế theo chế độ áp dụng.</li><li>Trạng thái thuế: dự kiến, đã kê khai, đã nộp; cần đối chiếu chứng từ.</li></ul><p class="muted" style="margin-top:12px">Không tự động coi doanh thu trừ chi phí là thu nhập chịu thuế trong mọi trường hợp. Cần kế toán/đơn vị chuyên môn xác nhận trước khi khai nộp.</p>`)}</div>`;
+ }
  if(page==="accounts"){
   out=`<div class="welcome"><div><h1>Quản lý tài khoản</h1><p>Danh sách tài khoản minh họa và vai trò được gán.</p></div></div>${panel("Tài khoản hệ thống",`<div class="table-wrap"><table><thead><tr><th>Tên đăng nhập</th><th>Người dùng</th><th>Vai trò</th><th>Trạng thái</th></tr></thead><tbody><tr><td>admin</td><td>Quản trị viên</td><td>${pill("Quản trị hệ thống")}</td><td>${pill("Hoạt động")}</td></tr><tr><td>owner</td><td>Chủ chung cư</td><td>${pill("Chủ chung cư")}</td><td>${pill("Hoạt động")}</td></tr><tr><td>tenant</td><td>Nguyễn Minh Anh</td><td>${pill("Đại diện thuê phòng")}</td><td>${pill("Hoạt động")}</td></tr></tbody></table></div><p class="muted" style="margin-top:14px">Bản demo không hỗ trợ tạo tài khoản thật.</p>`)}`;
  }
  if(page==="activity")out=`<div class="welcome"><div><h1>Nhật ký hoạt động</h1><p>Theo dõi hoạt động trong phiên trình diễn hiện tại.</p></div></div>${panel("Hoạt động gần đây",activity.map(a=>`<div class="notice"><div class="notice-icon">◷</div><div><p>${esc(a)}</p></div></div>`).join(""))}`;
- if(page==="system")out=`<div class="welcome"><div><h1>Quản lý dữ liệu và cấu hình hệ thống</h1><p>UC17 · Theo dõi cấu hình và dữ liệu trong bản trình diễn.</p></div></div>${stats([{label:"Tổng số phòng",value:rooms.length,icon:"⌂"},{label:"Hóa đơn",value:bills.length,icon:"▣"},{label:"Yêu cầu sửa chữa",value:repairs.length,icon:"⚒"},{label:"Thông báo",value:notices.length,icon:"♧"}])}${panel("Cấu hình hệ thống",`<div class="form-grid"><div class="field"><label>Tên hệ thống</label><input id="configName" value="Smart Apartment"></div><div class="field"><label>Phiên bản</label><input value="Demo 1.1" disabled></div><div class="field"><label>Chế độ hoạt động</label><select id="configMode"><option>Bản trình diễn</option><option>Kiểm thử</option></select></div><div class="field"><label>Ngôn ngữ</label><select><option>Tiếng Việt</option></select></div></div><div class="form-actions"><button class="primary" id="saveConfig">Lưu cấu hình demo</button></div><p class="muted">Lưu ý: cấu hình chỉ có hiệu lực trong phiên trình duyệt; website chưa kết nối máy chủ/cơ sở dữ liệu.</p>`)}`;
- if(page==="maintenance")out=`<div class="welcome"><div><h1>Bảo trì, sao lưu và an toàn hệ thống</h1><p>UC19 · Công cụ mô phỏng dành cho quản trị viên.</p></div></div>${stats([{label:"Trạng thái hệ thống",value:"Đang chạy",icon:"✓"},{label:"Dữ liệu phòng",value:rooms.length,icon:"⌂"},{label:"Dữ liệu hóa đơn",value:bills.length,icon:"▣"},{label:"Sao lưu gần nhất",value:"Chưa có",icon:"⟳"}])}${panel("Bảo trì hệ thống",`<div class="role-card"><div class="role-symbol">⟳</div><div><h3>Kiểm tra trạng thái</h3><p>Kiểm tra nhanh các nhóm dữ liệu đang được dùng trong bản demo.</p><button class="secondary" id="runCheck">Chạy kiểm tra</button></div></div><div class="role-card"><div class="role-symbol">▣</div><div><h3>Sao lưu dữ liệu demo</h3><p>Tải xuống một tệp JSON chứa dữ liệu phòng, hóa đơn, sửa chữa và thông báo hiện tại.</p><button class="primary" id="backupData">Tạo và tải bản sao lưu</button></div></div><div class="role-card"><div class="role-symbol">♧</div><div><h3>An toàn hệ thống</h3><p>Đây là bản demo chạy tĩnh. Không lưu mật khẩu an toàn và không có máy chủ bảo mật thực tế.</p></div></div>`)}`;
+ if(page==="system")out=`<div class="welcome"><div><h1>Cài đặt hệ thống</h1><p>Thông tin cấu hình bản trình diễn.</p></div></div>${panel("Thông tin hệ thống",`<div class="role-card"><div class="role-symbol">⌂</div><div><h3>Smart Apartment</h3><p>Phiên bản giao diện demo 1.0<br>Triển khai tĩnh qua GitHub Pages<br>Chưa kết nối cơ sở dữ liệu hoặc máy chủ xác thực.</p></div></div>`)}`;
  if(page==="myroom")out=`<div class="welcome"><div><h1>Thông tin phòng của tôi</h1><p>Thông tin thuê phòng minh họa.</p></div></div>${stats([{label:"Mã phòng",value:"P.201",icon:"⌂"},{label:"Tầng",value:"2",icon:"▤"},{label:"Tiền thuê/tháng",value:money(3500000),icon:"₫"},{label:"Trạng thái",value:"Đang thuê",icon:"✓"}])}${panel("Thông tin người đại diện",`<div class="role-card"><div class="role-symbol" style="background:#e1f7eb;color:#16845b">NA</div><div><h3>Nguyễn Minh Anh</h3><p>Vai trò: Đại diện thuê phòng<br>Phòng: P.201<br>Các thông tin trên là dữ liệu minh họa.</p></div></div>`)}`;
  if(page==="history"){
   const paid=bills.filter(b=>b.room==="P.201"&&b.status==="Đã thanh toán");
@@ -335,16 +262,16 @@ function renderPage(page){
  bindPageActions();
 }
 function bindPageActions(){
- const saveConfig=document.getElementById("saveConfig");if(saveConfig)saveConfig.onclick=()=>{const name=document.getElementById("configName").value.trim();if(!name){toast("Vui lòng nhập tên hệ thống.");return}log("Lưu cấu hình demo: "+name);toast("Đã lưu cấu hình trong phiên demo.")};
- const runCheck=document.getElementById("runCheck");if(runCheck)runCheck.onclick=()=>{log("Quản trị viên chạy kiểm tra hệ thống demo");toast(`Kiểm tra hoàn tất: ${rooms.length} phòng, ${bills.length} hóa đơn, ${repairs.length} yêu cầu sửa chữa.`)};
- const backup=document.getElementById("backupData");if(backup)backup.onclick=()=>{const data={createdAt:new Date().toISOString(),rooms,bills,repairs,notices,activity};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="smart-apartment-backup-demo.json";a.click();URL.revokeObjectURL(url);log("Tạo bản sao lưu JSON demo");toast("Đã tải bản sao lưu dữ liệu demo.")};
+ const addFinance=document.getElementById("addFinanceRecord");if(addFinance)addFinance.onclick=()=>document.getElementById("financeForm").classList.remove("hidden");
+ const cancelFinance=document.getElementById("cancelFinance");if(cancelFinance)cancelFinance.onclick=()=>document.getElementById("financeForm").classList.add("hidden");
+ const saveFinance=document.getElementById("saveFinance");if(saveFinance)saveFinance.onclick=()=>{const building=document.getElementById("finBuilding").value.trim(),type=document.getElementById("finType").value,monthRevenue=Number(document.getElementById("finMonthRevenue").value),yearRevenue=Number(document.getElementById("finYearRevenue").value),expenses=Number(document.getElementById("finExpenses").value),taxDeclared=Number(document.getElementById("finDeclared").value)||0,taxPaid=Number(document.getElementById("finPaid").value)||0;if(!building||monthRevenue<0||yearRevenue<0||expenses<0||taxDeclared<0||taxPaid<0||![monthRevenue,yearRevenue,expenses,taxDeclared,taxPaid].every(Number.isFinite)){toast("Vui lòng nhập tên đơn vị và số liệu hợp lệ.");return}financeRecords.push({building,type,monthRevenue,yearRevenue,expenses,taxDeclared,taxPaid});log("Quản trị viên thêm hồ sơ tài chính: "+building);renderPage("finance");toast("Đã thêm hồ sơ tài chính vào phiên demo.")};
  const search=document.getElementById("roomSearch"),filter=document.getElementById("roomFilter");
  function updateRoomTable(){const q=(search?.value||"").toLowerCase(),f=filter?.value||"";document.getElementById("roomTable").innerHTML=roomTable(rooms.filter(r=>(r.name+" "+r.tenant).toLowerCase().includes(q)&&(!f||r.status===f)))}
  if(search)search.addEventListener("input",updateRoomTable);if(filter)filter.addEventListener("change",updateRoomTable);
  const add=document.getElementById("showAddRoom");
  if(add)add.addEventListener("click",()=>{document.getElementById("modalRoot")?.remove();const div=document.createElement("div");div.id="modalRoot";div.style.cssText="position:fixed;inset:0;background:#12243b88;display:grid;place-items:center;padding:18px;z-index:20";div.innerHTML=`<section class="panel" style="width:min(100%,520px);margin:0"><h2>Thêm phòng mới</h2><div class="form-grid" style="margin-top:18px"><div class="field"><label>Mã phòng</label><input id="newRoomName" placeholder="P.501"></div><div class="field"><label>Tầng</label><input id="newRoomFloor" type="number" placeholder="5"></div><div class="field"><label>Giá thuê (VNĐ)</label><input id="newRoomPrice" type="number" placeholder="4000000"></div><div class="field"><label>Trạng thái</label><select id="newRoomStatus"><option>Trống</option><option>Đang thuê</option></select></div></div><div class="form-actions"><button class="secondary" id="closeModal">Hủy</button><button class="primary" id="saveRoom">Lưu phòng</button></div></section>`;document.body.appendChild(div);document.getElementById("closeModal").onclick=()=>div.remove();document.getElementById("saveRoom").onclick=()=>{const name=document.getElementById("newRoomName").value.trim(),floor=document.getElementById("newRoomFloor").value.trim(),price=Number(document.getElementById("newRoomPrice").value),status=document.getElementById("newRoomStatus").value;if(!name||!floor||price<=0){toast("Vui lòng nhập đầy đủ thông tin hợp lệ.");return}if(rooms.some(r=>r.name.toLowerCase()===name.toLowerCase())){toast("Mã phòng đã tồn tại.");return}rooms.push({name,floor,price,status,tenant:status==="Trống"?"—":"Chưa cập nhật"});log("Đã thêm phòng "+name);div.remove();renderPage("rooms");toast("Đã thêm phòng vào dữ liệu demo.")}});
  document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>renderPage(b.dataset.goto)));
- document.querySelectorAll("[data-pay]").forEach(b=>b.addEventListener("click",()=>{const bill=bills[Number(b.dataset.pay)];if(!bill)return;document.getElementById("paymentModal")?.remove();const modal=document.createElement("div");modal.id="paymentModal";modal.style.cssText="position:fixed;inset:0;background:#10233dcc;display:grid;place-items:center;padding:18px;z-index:1000;overflow:auto";modal.innerHTML=`<section class="panel" style="width:min(100%,560px);margin:auto;max-height:92vh;overflow:auto"><div class="panel-head"><h2>Thanh toán hóa đơn</h2><button class="secondary" id="closePayment">Đóng ✕</button></div><p style="color:#64748b;margin:0 0 16px">Thông tin thanh toán được mô phỏng trong hệ thống.</p><div style="background:#f1f6fc;border:1px solid #d9e5f2;border-radius:14px;padding:16px;margin-bottom:16px"><div class="muted">Khoản phí</div><strong>${esc(bill.type)} · ${esc(bill.room)}</strong><div class="muted" style="margin-top:10px">Số tiền cần thanh toán</div><div style="font-size:28px;font-weight:800;color:#17365b">${money(bill.amount)}</div></div><div class="form-grid"><div class="field"><label>Ngân hàng</label><input value="MB Bank" readonly></div><div class="field"><label>Số tài khoản</label><input id="demoAccountNo" value="1234567890" readonly></div><div class="field" style="grid-column:1/-1"><label>Tên chủ tài khoản nhận</label><input value="BAN QUAN LY CHUNG CU" readonly></div><div class="field" style="grid-column:1/-1"><label>Nội dung chuyển khoản</label><input value="P201 ${esc(bill.type)}" readonly></div></div><div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 0"><div style="font-weight:700">Mã QR thanh toán</div><div aria-label="Mã QR minh họa, không dùng để chuyển tiền thật" style="width:150px;height:150px;border:8px solid white;box-shadow:0 0 0 1px #d5deea;background-color:white;background-image:repeating-conic-gradient(#17365b 0% 25%,white 0% 50%);background-size:16px 16px;position:relative"><span style="position:absolute;inset:35px;background:white;border:8px solid #17365b;display:grid;place-items:center;font-weight:900;color:#17365b;font-size:13px">MB</span></div><small style="color:#718096;text-align:center">Mã QR minh họa, không dùng để chuyển tiền thật.</small></div><div class="form-actions"><button class="secondary" id="cancelPayment">Hủy</button><button class="primary" id="confirmDemoPayment">Tôi đã thanh toán</button></div></section>`;document.body.appendChild(modal);document.getElementById("closePayment").onclick=()=>modal.remove();document.getElementById("cancelPayment").onclick=()=>modal.remove();document.getElementById("confirmDemoPayment").onclick=()=>{bill.status="Đã thanh toán";log("Thanh toán mô phỏng: "+bill.room+" — "+bill.type);modal.remove();renderPage(currentPage);toast("Thanh toán mô phỏng thành công; trạng thái hóa đơn đã cập nhật.")};modal.addEventListener("click",e=>{if(e.target===modal)modal.remove()})}));
+ document.querySelectorAll("[data-pay]").forEach(b=>b.addEventListener("click",()=>{const bill=bills[Number(b.dataset.pay)];if(bill){bill.status="Đã thanh toán";log("Đánh dấu thanh toán: "+bill.room+" — "+bill.type);renderPage(currentPage);toast("Đã cập nhật trạng thái thanh toán demo.")}}));
  document.querySelectorAll("[data-repair]").forEach(b=>b.addEventListener("click",()=>{const item=repairs[Number(b.dataset.repair)];if(item){item.status=item.status==="Chờ tiếp nhận"?"Đang xử lý":item.status==="Đang xử lý"?"Đã xử lý":"Đã xử lý";log("Cập nhật yêu cầu sửa chữa "+item.room);renderPage(currentPage);toast("Đã cập nhật trạng thái yêu cầu.")}}));
  const sr=document.getElementById("showRepair");if(sr)sr.onclick=()=>document.getElementById("repairForm").classList.remove("hidden");
  const cr=document.getElementById("cancelRepair");if(cr)cr.onclick=()=>document.getElementById("repairForm").classList.add("hidden");
@@ -354,66 +281,5 @@ function bindPageActions(){
  const subn=document.getElementById("submitNotice");if(subn)subn.onclick=()=>{const title=document.getElementById("noticeTitle").value.trim(),body=document.getElementById("noticeBody").value.trim();if(!title||!body){toast("Vui lòng nhập đủ tiêu đề và nội dung.");return}notices.unshift({title,body,date:new Date().toLocaleDateString("vi-VN")});log("Đăng thông báo: "+title);renderPage("notices");toast("Đã đăng thông báo demo.")};
 }
 </script>
-
-<div id="fontWidget">
-  <div id="fontControls" role="group" aria-label="Điều chỉnh cỡ chữ">
-    <span>Cỡ chữ</span>
-    <button type="button" id="fontDecrease" aria-label="Giảm cỡ chữ" title="Giảm cỡ chữ">A−</button>
-    <button type="button" id="fontIncrease" aria-label="Tăng cỡ chữ" title="Tăng cỡ chữ">A+</button>
-    <button type="button" id="fontReset" title="Đặt lại cỡ chữ">Mặc định</button>
-  </div>
-  <button type="button" id="fontToggle" aria-label="Mở điều chỉnh cỡ chữ" aria-expanded="false" title="Điều chỉnh cỡ chữ">Aa</button>
-</div>
-<script>
-(function(){
-  const root=document.documentElement;
-  const body=document.body;
-  const minScale=0.85,maxScale=1.4,step=0.1;
-  let scale=1;
-  try{const saved=Number(localStorage.getItem('smartApartmentFontScale'));if(saved>=minScale&&saved<=maxScale)scale=saved;}catch(e){}
-  function saveBaseSizes(container){
-    const nodes=[];
-    if(container.nodeType===1)nodes.push(container);
-    if(container.querySelectorAll)nodes.push(...container.querySelectorAll('*'));
-    nodes.forEach(el=>{
-      if(!el.style.getPropertyValue('--base-font-size')){
-        const size=parseFloat(getComputedStyle(el).fontSize);
-        if(Number.isFinite(size))el.style.setProperty('--base-font-size',size+'px');
-      }
-    });
-  }
-  // Ghi nhận cỡ chữ gốc trước khi bật chế độ thay đổi.
-  saveBaseSizes(body);
-  function applyScale(){
-    body.classList.add('font-resizable');
-    body.style.setProperty('--font-scale',String(scale));
-    try{localStorage.setItem('smartApartmentFontScale',String(scale));}catch(e){}
-    const label=document.getElementById('fontControls');
-    if(label)label.setAttribute('aria-label','Cỡ chữ hiện tại '+Math.round(scale*100)+'%');
-  }
-  const widget=document.getElementById('fontWidget');
-  const toggle=document.getElementById('fontToggle');
-  toggle.addEventListener('click',()=>{
-    const open=widget.classList.toggle('open');
-    toggle.setAttribute('aria-expanded',String(open));
-    toggle.setAttribute('aria-label',open?'Đóng điều chỉnh cỡ chữ':'Mở điều chỉnh cỡ chữ');
-    toggle.title=open?'Đóng điều chỉnh cỡ chữ':'Điều chỉnh cỡ chữ';
-  });
-  document.addEventListener('click',event=>{if(!widget.contains(event.target)){widget.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Mở điều chỉnh cỡ chữ');toggle.title='Điều chỉnh cỡ chữ';}});
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'){widget.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Mở điều chỉnh cỡ chữ');toggle.title='Điều chỉnh cỡ chữ';}});
-  document.getElementById('fontDecrease').addEventListener('click',()=>{scale=Math.max(minScale,Math.round((scale-step)*100)/100);applyScale()});
-  document.getElementById('fontIncrease').addEventListener('click',()=>{scale=Math.min(maxScale,Math.round((scale+step)*100)/100);applyScale()});
-  document.getElementById('fontReset').addEventListener('click',()=>{scale=1;applyScale()});
-  applyScale();
-  // Ghi nhận cỡ chữ gốc cho nội dung được tạo thêm khi chuyển trang.
-  const observer=new MutationObserver(records=>{
-    const added=[];
-    records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1&&node.id!=='fontControls')added.push(node)}));
-    if(added.length){body.classList.remove('font-resizable');added.forEach(saveBaseSizes);applyScale();}
-  });
-  observer.observe(body,{childList:true,subtree:true});
-})();
-</script>
-
 </body>
 </html>
