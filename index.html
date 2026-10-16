@@ -93,6 +93,13 @@ th{font-size:13px}
   table{font-size:13px}
   th{font-size:12px}
 }
+
+.font-tools{display:flex;align-items:center;gap:4px;padding:4px;border:1px solid #dbe5f1;border-radius:10px;background:#fff}
+.font-adjust{min-width:32px;height:30px;border:0;border-radius:7px;background:#edf4ff;color:#24588f;font-weight:800;cursor:pointer;font-size:14px}
+.font-adjust:hover{background:#dceaff}
+.font-reset{font-size:12px}
+@media(max-width:700px){.font-tools{gap:2px}.font-adjust{min-width:27px;height:28px}.top-right{flex-wrap:wrap;justify-content:flex-end}}
+
 </style>
 </head>
 <body>
@@ -143,7 +150,7 @@ th{font-size:13px}
     <div class="side-bottom"><button class="nav" id="logoutBottom">↪ &nbsp; Đăng xuất</button></div>
   </aside>
   <main class="main">
-    <header class="topbar"><div class="top-title" id="topTitle">Tổng quan</div><div class="top-right"><span id="roleChip" class="role-chip">Quản trị viên</span><button class="logout" id="logoutTop">Đăng xuất ↗</button></div></header>
+    <header class="topbar"><div class="top-title" id="topTitle">Tổng quan</div><div class="top-right"><span id="roleChip" class="role-chip">Quản trị viên</span><div class="font-tools" role="group" aria-label="Điều chỉnh cỡ chữ"><button type="button" id="fontSmaller" class="font-adjust" title="Giảm cỡ chữ" aria-label="Giảm cỡ chữ">A−</button><button type="button" id="fontReset" class="font-adjust font-reset" title="Cỡ chữ mặc định" aria-label="Cỡ chữ mặc định">A</button><button type="button" id="fontLarger" class="font-adjust" title="Tăng cỡ chữ" aria-label="Tăng cỡ chữ">A+</button></div><button class="logout" id="logoutTop">Đăng xuất ↗</button></div></header>
     <div class="content" id="pageContent"></div>
   </main>
 </section>
@@ -306,6 +313,20 @@ function bindPageActions(){
  const cn=document.getElementById("cancelNotice");if(cn)cn.onclick=()=>document.getElementById("noticeForm").classList.add("hidden");
  const subn=document.getElementById("submitNotice");if(subn)subn.onclick=()=>{const title=document.getElementById("noticeTitle").value.trim(),body=document.getElementById("noticeBody").value.trim();if(!title||!body){toast("Vui lòng nhập đủ tiêu đề và nội dung.");return}notices.unshift({title,body,date:new Date().toLocaleDateString("vi-VN")});log("Đăng thông báo: "+title);renderPage("notices");toast("Đã đăng thông báo.")};
 }
+
+// Điều chỉnh cỡ chữ giao diện: giảm, mặc định, tăng; lưu lựa chọn trên trình duyệt.
+(function setupFontControls(){
+ const key="smartApartmentFontScale";
+ let scale=1;
+ try{const saved=Number(localStorage.getItem(key));if(saved>=0.9&&saved<=1.2)scale=saved}catch(e){}
+ const apply=()=>{document.documentElement.style.setProperty("--user-font-scale",String(scale));document.body.style.zoom=String(scale);};
+ const save=()=>{try{localStorage.setItem(key,String(scale))}catch(e){};apply()};
+ document.getElementById("fontSmaller")?.addEventListener("click",()=>{scale=Math.max(0.9,Math.round((scale-0.05)*100)/100);save()});
+ document.getElementById("fontLarger")?.addEventListener("click",()=>{scale=Math.min(1.2,Math.round((scale+0.05)*100)/100);save()});
+ document.getElementById("fontReset")?.addEventListener("click",()=>{scale=1;save()});
+ apply();
+})();
+
 </script>
 </body>
 </html>
